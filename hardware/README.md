@@ -8,7 +8,7 @@
 
 # Pinout
 
-<a href="#"><img src="resources/Módulo Relay.jpg" width="500px"><br/> Pinout</a>
+<a href="#"><img src="resources/relay_pinout.jpg" width="500px"><br/> Pinout</a>
 
 | Function                    | PCB Label | Description                                                      |
 |-----------------------------|-----------|------------------------------------------------------------------|

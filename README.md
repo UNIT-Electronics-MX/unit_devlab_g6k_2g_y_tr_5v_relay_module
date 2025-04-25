@@ -38,7 +38,7 @@ A power-status LED that lights whenever JDVCC (5 V to the relays) is present, **
 ### LED_IN
 An input-signal LED that lights or blinks whenever IN receives a logic-high from the MCU, providing **visual feedback of control signals.**
 
-<a href="#"><img src="hardware/resources/Modulo Rele G6K-2G-Y-TR DC5 v4.jpg" width="500px"><br/> UNIT Relay Module</a>
+<a href="#"><img src="hardware/resources/relay_module.jpg" width="500px"><br/> UNIT Relay Module</a>
 
 
 
