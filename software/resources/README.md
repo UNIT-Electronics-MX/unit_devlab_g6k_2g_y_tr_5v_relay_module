@@ -3,8 +3,7 @@ title: "UNIT Relay Module"
 version: "1.0"
 modified: "2025-05-02"
 output: "relay_module"
-subtitle: "Universal Programmer for AVR, ARM (CMSIS-DAP), and CPLD (MAX II)
-"
+subtitle: "This dual-channel relay module safely interfaces microcontrollers with higher-voltage or high-current loads by separating control from power."
 ---
 
 <!--

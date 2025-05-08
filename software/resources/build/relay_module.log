@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.1.20)  5 MAY 2025 15:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.1.20)  8 MAY 2025 17:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -723,7 +723,7 @@ Package rerunfilecheck Info: File `relay_module.out' has not changed.
 Here is how much of TeX's memory you used:
  12050 strings out of 474222
  193118 string characters out of 5748733
- 1942975 words of memory out of 5000000
+ 1943975 words of memory out of 5000000
  34139 multiletter control sequences out of 15000+600000
  567407 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -732,7 +732,7 @@ Here is how much of TeX's memory you used:
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on build/relay_module.pdf (4 pages, 533481 bytes).
+Output written on build/relay_module.pdf (4 pages, 533471 bytes).
 PDF statistics:
  57 PDF objects out of 1000 (max. 8388607)
  37 compressed objects within 1 object stream
