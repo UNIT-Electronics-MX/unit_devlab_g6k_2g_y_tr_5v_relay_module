@@ -38,19 +38,19 @@ This dual-channel relay module is engineered to safely and reliably interface wi
 
 ## Common Applications
 
-• **Home Automation:** Manage lighting, fans, and curtains with smart integrations.  
-• **Industrial Automation:** Operate valves, pumps, and safety systems.  
-• **IoT Projects:** Enable remote control and sensor-based automation.  
-• **Automated Irrigation:** Activate solenoid valves for efficient watering.  
-• **HVAC Control:** Regulate compressors, heaters, and fans.  
-• **Renewable Energy:** Switch between solar and grid power; manage batteries.  
-• **Testing & Laboratory:** Control circuits and simulate switch operations.  
-• **Robotics & Mechatronics:** Drive actuators with isolated power control.  
-• **Smart Agriculture:** Oversee greenhouse ventilation and automated feeding.  
-• **Vehicle Power Management:** Control lights and pumps in RC vehicles.  
-• **Audio & Signaling:** Manage speakers, amplifiers, and buzzers.  
-• **Security & Alarm Systems:** Trigger sirens and operate electric locks.  
-• **Education & Demos:** Demonstrate principles of isolation and switching.
+- Home Automation
+- Industrial Automation
+- IoT Projects
+- Automated Irrigation
+- HVAC Control
+- Renewable Energy
+- Testing & Laboratory
+- Robotics & Mechatronics
+- Smart Agriculture
+- Vehicle Power Management
+- Audio & Signaling
+- Security & Alarm Systems
+- Education & Demos
 
 ## License MIT
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
