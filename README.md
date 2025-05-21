@@ -15,8 +15,6 @@ This dual-channel relay module is engineered to safely and reliably interface wi
 - **Screw terminals** for secure connection of power loads    
 
 
-
-
 ## **Description** 
 
 <div align="center">
