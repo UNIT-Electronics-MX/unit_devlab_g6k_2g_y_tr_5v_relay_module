@@ -36,23 +36,21 @@ This dual-channel relay module is engineered to safely and reliably interface wi
 
 
 
-## **Common Applications**
+## Common Applications
 
-| Application               | Description                                                                                              |
-|---------------------------|----------------------------------------------------------------------------------------------------------|
-| Home Automation           | Switch lights, fans, curtains; integrate with Home Assistant, Alexa or Google Home                       |
-| Industrial Automation     | Control valves, pumps, AC motors; switch alarms and safety systems                                       |
-| IoT Projects              | Remote control via MQTT, Node-RED or Blynk; automated actions based on sensor data                       |
-| Automated Irrigation      | Drive solenoid valves for garden and field watering                                                      |
-| HVAC Control              | Manage air conditioner compressors, heaters, exhaust fans                                                |
-| Renewable Energy          | Switch between solar array and grid; battery management and backup switching                             |
-| Testing & Laboratory      | Sequentially power different circuits on a test bench; simulate switches/buttons for automated tests     |
-| Robotics & Mechatronics   | Drive high-current actuators (pumps, valves, DC motors); isolate power circuits from control electronics |
-| Smart Agriculture         | Control greenhouse ventilation and automated feeding systems                                             |
-| Vehicle Power Management  | Switch lights, fuel pumps, fans in RC vehicles and drones                                                |
-| Audio & Signaling         | Switch speakers, amplifiers, sirens or buzzers                                                           |
-| Security & Alarm Systems  | Trigger sirens or lock/unlock electric door locks                                                        |
-| Education & Demos         | Teach isolation, load switching and optocoupler principles                                               |
+• **Home Automation:** Manage lighting, fans, and curtains with smart integrations.  
+• **Industrial Automation:** Operate valves, pumps, and safety systems.  
+• **IoT Projects:** Enable remote control and sensor-based automation.  
+• **Automated Irrigation:** Activate solenoid valves for efficient watering.  
+• **HVAC Control:** Regulate compressors, heaters, and fans.  
+• **Renewable Energy:** Switch between solar and grid power; manage batteries.  
+• **Testing & Laboratory:** Control circuits and simulate switch operations.  
+• **Robotics & Mechatronics:** Drive actuators with isolated power control.  
+• **Smart Agriculture:** Oversee greenhouse ventilation and automated feeding.  
+• **Vehicle Power Management:** Control lights and pumps in RC vehicles.  
+• **Audio & Signaling:** Manage speakers, amplifiers, and buzzers.  
+• **Security & Alarm Systems:** Trigger sirens and operate electric locks.  
+• **Education & Demos:** Demonstrate principles of isolation and switching.
 
 ## License MIT
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
