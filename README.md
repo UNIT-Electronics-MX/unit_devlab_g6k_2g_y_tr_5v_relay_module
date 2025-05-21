@@ -1,18 +1,11 @@
 # Relay Module
 
-This two-channel relay module is designed to interac with a microcontroller with higher-voltage or higher-current loads safely and reliably. It features:
+This dual-channel relay module is engineered to safely and reliably interface with microcontrollers that manage higher-voltage or higher-current loads. It provides a dedicated 5 V supply for powering the relay coils while the logic supply is aligned with the microcontroller’s I/O voltage (3.3 V or 5 V). The module accepts digital control signals to toggle the relays, and the relay contacts are designed with both normally-open (NO) and normally-closed (NC) configurations, offering versatile switching options.
 
-* **Separate relay-coil supply:** allows using a dedicated 5 V rail for the relays.
+<div align="center">
+    <a href="#"><img src="hardware/resources/relay_module.png" width="500px"><br/> UNIT Relay Module</a>
+</div>
 
-* **Logic supply:** matches your MCU’s I/O voltage (3.3 V or 5 V).
-
-* **Control input:** accept digital signals to switch each relay.
-
-* **Relay contacts (NO, NC, COM):** provide both normally-open and normally-closed switching options.
-
-<a href="#"><img src="hardware/resources/relay_module.jpg" width="500px"><br/> UNIT Relay Module</a>
-
----
 
 ## **Features**
 - **2 × 5 V relays** with Normally Open (NO) and Normally Closed (NC) contacts  
@@ -21,7 +14,27 @@ This two-channel relay module is designed to interac with a microcontroller with
 - Compatible with **3.3 V or 5 V logic**  
 - **Screw terminals** for secure connection of power loads    
 
----
+
+
+
+## **Description** 
+
+<div align="center">
+
+| Signal         | Description                                                                  |
+|----------------|------------------------------------------------------------------------------|
+| JDVCC          | +5V for relay coils; isolated from MCU logic, enabling 3.3V systems.         |
+| VCC            | Powers input drivers; must match MCU voltage (3.3V or 5V).                   |
+| IN             | MCU signal; high (~VCC) activates the optocoupler and relay.                 |
+| NO1 / NO2      | Normally open contacts; close only when the relay is energized.              |
+| COM1 / COM2    | Common terminal toggling between NC and NO.                                |
+| NC1 / NC2      | Normally closed contacts; open when the relay is active.                     |
+| LED_PWR        | LED showing JDVCC (5V) presence.                                               |
+| LED_IN         | LED indicating control signal activity from IN.                            |
+
+</div>
+
+
 
 ## **Common Applications**
 
@@ -41,35 +54,12 @@ This two-channel relay module is designed to interac with a microcontroller with
 | Security & Alarm Systems  | Trigger sirens or lock/unlock electric door locks                                                        |
 | Education & Demos         | Teach isolation, load switching and optocoupler principles                                               |
 
----
+## License MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## **Description** 
-
-
-### JDVCC
-Supplies a dedicated **+5 V** to the relay coils. By isolating coil power from the MCU’s logic rail, you can drive 5 V relays even if your microcontroller operates at 3.3 V.
-
-### VCC
-**Powers the input-driver circuitry.** Must match the MCU’s I/O voltage—either 3.3 V or 5 V—to ensure reliable signal detection on IN.
-
-### IN
-Digital control lines from the microcontroller. A logic-high level (~VCC) on IN **activates** the optocoupler and closes that **relay’s contacts.**
-
-### NO1 / NO2 (Normally Open)
-Contacts that **remain open** when the **relay is de-energized** and close to COMx when the coil is energized, allowing current flow only during activation.
-
-### COM1 / COM2 (Common)
-The shared terminal of each relay. It **switches between NCx and NOx** depending on whether the relay coil is energized.
-
-### NC1 / NC2 (Normally Closed)
-Contacts that are **closed to COMx when the relay is de-energized** and open when the coil is energized, interrupting the circuit upon activation.
-
-### LED_PWR
-A power-status LED that lights whenever JDVCC (5 V to the relays) is present, **confirming the module is energized.**
-
-### LED_IN
-An input-signal LED that lights or blinks whenever IN receives a logic-high from the MCU, providing **visual feedback of control signals.**
-
+## Resources
+- [Product brief](./unit_relay_module_g6k_2g_y_tr_dc5.pdf)
+- [Schematic](./hardware/UE0089-SCH-G6K-2G-Y-TR-DC5-001-T.pdf)
 
 
 
