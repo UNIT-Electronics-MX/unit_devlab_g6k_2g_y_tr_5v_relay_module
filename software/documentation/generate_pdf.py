@@ -37,15 +37,21 @@ def markdown_table_to_latex(md_table):
 def markdown_links_to_latex_list(text):
     items = re.findall(r'- \[(.*?)\]\((.*?)\)', text)
     if not items:
-        return text.strip()
+        return ""  # <- evita entorno vacío
     return "\\begin{itemize}\n" + "\n".join([f"\\item \\href{{{url}}}{{{label}}}" for label, url in items]) + "\n\\end{itemize}"
+
 
 def markdown_bullets_to_latex(text):
     lines = text.strip().splitlines()
-    items = [line.strip()[2:].strip() for line in lines if line.strip().startswith('-')]
+    items = [
+        line.strip()[2:].strip()
+        for line in lines
+        if line.strip().startswith('-') and len(line.strip()[2:].strip()) > 0
+    ]
     if not items:
-        return text
+        return ""
     return "\\begin{itemize}\n" + "\n".join([f"\\item {item}" for item in items]) + "\n\\end{itemize}"
+
 
 def fix_paragraphs(text):
     return text.replace('\n\n', '\n\n\\par\n\n')
@@ -83,7 +89,7 @@ def format_images_with_titles(content):
             f"\\section*{{{title}}}\n"
             "\\vspace{1em}\n"
             "\\begin{center}\n"
-            f"\\includegraphics[width=0.80\\textwidth,keepaspectratio]{{{path}}}\n"
+            f"\\includegraphics[width=0.85\\textwidth,keepaspectratio]{{{path}}}\n"
             "\\end{center}\n"
         )
     return code
@@ -98,9 +104,18 @@ def parse_readme_md(path):
     frontmatter = yaml.safe_load(frontmatter_match.group(1)) if frontmatter_match else {}
     content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
 
-    image_paths = re.findall(r'!\[.*?\]\((.*?)\)', content)
-    image_product = next((img for img in image_paths if "product" in img.lower()), "")
-    other_images = [img for img in image_paths if img != image_product]
+    # image_paths = re.findall(r'!\[.*?\]\((.*?)\)', content)
+    # image_product = next((img for img in image_paths if "product" in img.lower()), "")
+    # other_images = [img for img in image_paths if img != image_product]
+
+    image_matches = re.findall(r'!\[(.*?)\]\((.*?)\)', content)
+    image_product = next((path for alt, path in image_matches if "product" in alt.lower()), "")
+    image_paths = [path for _, path in image_matches]
+    if not image_product and image_paths:
+        image_product = image_paths[0]
+        if not os.path.exists(image_product):
+            print(f"⚠️ Advertencia: La imagen principal no fue encontrada en la ruta: {image_product}")
+
 
     pin_table_match = re.search(r'## Pin.*?Layout\n((?:\|.*\n)+)', content)
     pin_table = markdown_table_to_latex(pin_table_match.group(1)) if pin_table_match else "No table."
@@ -158,7 +173,24 @@ def render_latex(template_path, output_path, replacements):
         f.write(tex)
 
 def compile_pdf(tex_file):
-    subprocess.run(['pdflatex', '-interaction=nonstopmode', f'-output-directory=build', tex_file], check=True)
+    try:
+        for _ in range(2):
+            result = subprocess.run(
+                ['pdflatex', '-interaction=nonstopmode', '-output-directory=build', tex_file],
+                capture_output=True,
+                text=True
+            )
+            if result.returncode != 0:
+                print("⚠️ LaTeX compiló con errores:")
+                print(result.stdout)
+                print(result.stderr)
+                # aún así intentamos seguir si el PDF fue generado
+                if not os.path.exists("build/" + os.path.splitext(os.path.basename(tex_file))[0] + ".pdf"):
+                    raise subprocess.CalledProcessError(result.returncode, result.args)
+    except subprocess.CalledProcessError as e:
+        print(f"❌ LaTeX falló con código {e.returncode}")
+        raise
+
 
 
 def clean_aux_files(output_name):
