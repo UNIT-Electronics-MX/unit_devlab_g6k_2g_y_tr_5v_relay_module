@@ -31,7 +31,7 @@ Designed for reliable switching in demanding applications, this two-channel rela
 - Each relay channel is triggered via an active-high digital input signal (IN1, IN2) from the microcontroller.
 - The relay outputs provide access to a set of contacts: Normally Open (NO), Normally Closed (NC), and Common (COM).
 - When triggered, the relay switches the contacts, allowing control of external AC/DC loads while protecting the MCU from high-voltage transients.
-- LED indicators (LED_PWR and LED_IN) provide immediate visual feedback of power and activation status.
+- LED indicators (LED PWR and LED IN) provide immediate visual feedback of power and activation status.
 
 ## Electrical Characteristics & Signal Overview
 
