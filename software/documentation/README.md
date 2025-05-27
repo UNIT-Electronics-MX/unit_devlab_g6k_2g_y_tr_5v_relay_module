@@ -73,8 +73,8 @@ This dual-channel relay module isolates high-power operations from sensitive MCU
 | NO2     | Relay 2 normally open contact                                       |
 | COM2    | Relay 2 common terminal                                             |
 | NC2     | Relay 2 normally closed contact                                     |
-| LED_PWR | Indicator LED for power (active when JDVCC is present)              |
-| LED_IN  | Indicator LED showing active input from the MCU                     |
+| LED PWR | Indicator LED for power (active when JDVCC is present)              |
+| LED IN  | Indicator LED showing active input from the MCU                     |
 
 
 
