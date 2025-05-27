@@ -24,22 +24,42 @@ This dual-channel relay module safely interfaces microcontrollers with higher-vo
 Designed for reliable switching in demanding applications, this two-channel relay module isolates high-power relay operations from sensitive MCU logic. It delivers a consistent +5V to the relay coils via JDVCC, while the logic supply labeled VCC provides the appropriate voltage level needed for input signal processing. When a digital high is applied at the IN pin, the module’s optocoupler engages to close the relay contacts among NO, NC, and COM as required. Additionally, the onboard LEDs signal the presence of power and active control, ensuring clear operational feedback.
 
 
-
 ## Functional Description
 
-- 
+- The module includes two independent electromechanical relays, each controlled through optocouplers for complete electrical isolation between control logic and relay coil voltage.
+- A dedicated power rail (JDVCC) provides 5V specifically to energize the relay coils, while a separate VCC pin supplies 3.3V or 5V to the optocoupler input stage.
+- Each relay channel is triggered via an active-high digital input signal (IN1, IN2) from the microcontroller.
+- The relay outputs provide access to a set of contacts: Normally Open (NO), Normally Closed (NC), and Common (COM).
+- When triggered, the relay switches the contacts, allowing control of external AC/DC loads while protecting the MCU from high-voltage transients.
+- LED indicators (LED_PWR and LED_IN) provide immediate visual feedback of power and activation status.
 
 ## Electrical Characteristics & Signal Overview
 
-- 
+- Operating voltage (logic side): 3.0 V – 5.5 V (via VCC pin)
+- Relay coil voltage: 5 V nominal (via JDVCC)
+- Trigger current per channel: 2–15 mA depending on input logic level
+- Contact rating: Up to 10 A @ 250 VAC or 10 A @ 30 VDC
+- Optocoupler logic threshold: Compatible with 3.3 V and 5 V logic
+- Isolation resistance: ≥ 100 MΩ @ 500 VDC between control and relay side
 
 ## Applications
 
--
+- Home automation and IoT-based appliance control
+- Industrial machinery switching
+- Smart lighting systems
+- Motor or actuator control
+- Security and alarm systems
+- HVAC and environmental controllers
 
 ## Features
 
-- 
+- Dual-channel electromechanical relay outputs
+- Optical isolation between control and power stages
+- Dedicated 5V relay coil supply (JDVCC)
+- 3.3V or 5V logic compatibility (VCC)
+- LED indicators for control signal and power presence
+- Breakout access to NO, NC, and COM terminals per channel
+- Supports both AC and DC loads up to 10 A
 
 
 ## Pin & Connector Layout
@@ -64,18 +84,30 @@ Designed for reliable switching in demanding applications, this two-channel rela
 
 ### Interface Overview
 
-| Interface  | Signals / Pins            | Typical Use                                         |
-|------------|----------------------------|-----------------------------------------------------|
-| -      | -  | -       |
+### Interface Overview
+
+| Interface  | Signals / Pins                  | Typical Use                                     |
+|------------|----------------------------------|-------------------------------------------------|
+| Power      | JDVCC, VCC, GND                  | Power relay coils and optocoupler driver circuit|
+| Control    | IN1, IN2                         | Trigger signals from MCU                        |
+| Output     | NO1, COM1, NC1 / NO2, COM2, NC2  | Switching terminals for AC/DC load             |
+| Indicators | LED_PWR, LED_IN                  | Visual status of power and input activation     |
 
 
 
-###  Supports 
 
+### Supports
 
-| Symbol | I/O   | Description                         |
-| ------ | ----- | ----------------------------------- |
-| -    | -| Power supply (3.3V or 5V)           |
+| Symbol | I/O   | Description                                 |
+|--------|-------|---------------------------------------------|
+| JDVCC  | Input | 5V supply input for relay coil energization |
+| VCC    | Input | Logic voltage input (3.3V or 5V)            |
+| GND    | Input | Shared ground for logic and relay power     |
+| IN1    | Input | Control signal to activate relay 1          |
+| IN2    | Input | Control signal to activate relay 2          |
+| NOx    | Output| Normally open contact (connected when active) |
+| NCx    | Output| Normally closed contact (disconnected when active) |
+| COMx   | Output| Common terminal for relay switching          |
 
 
 ## Block Diagram
