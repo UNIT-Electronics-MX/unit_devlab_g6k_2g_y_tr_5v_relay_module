@@ -19,9 +19,7 @@ Edita las secciones respetando el orden, sin eliminar los encabezados.
 
 ## Introduction
 
-This dual-channel relay module safely interfaces microcontrollers with higher-voltage or high-current loads by separating control from power. It features a dedicated 5V rail for the relay coils labeled JDVCC, while the logic supply labeled VCC matches the MCU’s operating voltage of 3.3V or 5V. Digital control signals applied to the IN pin trigger an optocoupler that activates the relay contacts. These contacts include normally open, normally closed, and common, labeled NO, NC, and COM respectively.Indicator LEDs labeled LED PWR and LED IN provide visual confirmation of the power and control signal status.
-
-Designed for reliable switching in demanding applications, this two-channel relay module isolates high-power relay operations from sensitive MCU logic. It delivers a consistent +5V to the relay coils via JDVCC, while the logic supply labeled VCC provides the appropriate voltage level needed for input signal processing. When a digital high is applied at the IN pin, the module’s optocoupler engages to close the relay contacts among NO, NC, and COM as required. Additionally, the onboard LEDs signal the presence of power and active control, ensuring clear operational feedback.
+This dual-channel relay module isolates high-power operations from sensitive MCU logic. It supplies a dedicated 5V rail (JDVCC) for relay coils while using the VCC pin to match the MCU’s operating voltage (3.3V or 5V). A digital high on the IN pin triggers an optocoupler that switches the NO, NC, and COM contacts. LED indicators provide immediate feedback on power and control status.
 
 
 ## Functional Description
