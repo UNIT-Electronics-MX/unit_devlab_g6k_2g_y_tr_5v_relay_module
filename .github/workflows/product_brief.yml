@@ -78,17 +78,17 @@ jobs:
         mkdir -p docs
         cp software/documentation/build/unit_product_brief.pdf docs/
 
-    - name: Commit and push PDF to docs/ (only on main)
+    - name: Force replace PDF and commit
       if: github.ref == 'refs/heads/main'
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
 
-        # Restaurar estado limpio para evitar errores por conflictos previos
         git fetch origin
         git reset --hard origin/main
 
-        # Agregar y publicar el PDF
-        git add docs/unit_product_brief.pdf
-        git commit -m "Publish compressed PDF [skip ci]" || echo "No changes to commit"
+        rm -f docs/unit_product_brief.pdf
+        cp software/documentation/build/unit_product_brief.pdf docs/
+        git add -f docs/unit_product_brief.pdf
+        git commit -m "Force update PDF [skip ci]" || echo "No changes to commit"
         git push origin main
