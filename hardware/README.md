@@ -1,14 +1,19 @@
 # Hardware
 
+<div align="center">
+    <a href="#"><img src="resources/img/Schematics_icon.jpg" width="400px"><br/>Schematic</a>
+    <br/>
 
-<a href="#"><img src="resources/Schematics_icon.jpg?raw=false" width="500px"><br/> Schematics</a>
-
-
-
+</div>
 
 # Pinout
 
-<a href="#"><img src="resources/relay_pinout.jpg" width="500px"><br/> Pinout</a>
+<div align="center">
+    <a href="#"><img src="resources/UE0082-PINOUT-UNIT_G6K-2G-Y-TR DC5-RELAY-EN.png" width="500px"><br/>Pinout</a>
+    <br/>
+
+
+</div>
 
 | Function                    | PCB Label | Description                                                      |
 |-----------------------------|-----------|------------------------------------------------------------------|
@@ -23,4 +28,15 @@
 | Normally closed contact 2   | NC2       | Relay 2 contact that opens when the coil is energized            |
 | Power indicator LED         | LED_PWR   | Lights whenever the module is powered (JDVCC present)            |
 | Input-signal indicator LED  | LED_IN    | Lights or flashes to show an active IN signal from the MCU       |
+
+---
+
+# Dimensions
+
+<div align="center">
+    <a href="#"><img src="resources/dimensions.png" width="500px"><br/>Dimensions</a>
+    <br/>
+
+
+</div>
 
