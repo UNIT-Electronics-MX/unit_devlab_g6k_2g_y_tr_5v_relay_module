@@ -15,7 +15,7 @@ Edita las secciones respetando el orden, sin eliminar los encabezados.
 
 # UNIT Relay Module
 
-![product](./images/product.jpg)
+![product](./images/top.png)
 
 ## Introduction
 
@@ -110,11 +110,11 @@ This dual-channel relay module isolates high-power operations from sensitive MCU
 
 ## Block Diagram
 
-![Function Diagram](images/function-diagram.jpg)
+![Function Diagram](./images/pinout.png)
 
 ## Dimensions
 
-![Dimensions](images/dimensions.png)
+![Dimensions](./images/dimension.png)
 
 ## Usage
 
