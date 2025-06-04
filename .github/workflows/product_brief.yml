@@ -33,9 +33,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-lang-english ghostscript
 
-    - name: Validate README content
-      run: python test_readme.py
-      working-directory: software/documentation
+
       
     - name: Copy and rename hardware images for documentation
       run: |
@@ -52,6 +50,10 @@ jobs:
         # Buscar y copiar top
         file=$(ls hardware/resources/unit_top_*.png 2>/dev/null | head -n1)
         if [ -n "$file" ]; then cp "$file" software/documentation/images/top.png; else echo "top not found"; fi
+
+    - name: Validate README content
+      run: python test_readme.py
+      working-directory: software/documentation
 
     - name: Generate LaTeX PDF
       run: python generate_pdf.py
