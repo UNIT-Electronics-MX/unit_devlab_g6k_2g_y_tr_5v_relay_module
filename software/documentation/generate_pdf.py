@@ -112,10 +112,16 @@ def parse_readme_md(path):
     frontmatter = yaml.safe_load(frontmatter_match.group(1)) if frontmatter_match else {}
     content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
 
-    image_paths = re.findall(r'!\[.*?\]\((.*?)\)', content)
-    image_product = next((img for img in image_paths if "product" in img.lower()), "")
-    other_images = [img for img in image_paths if img != image_product]
 
+    image_matches = re.findall(r'!\[(.*?)\]\((.*?)\)', content)
+    image_product = next((path for alt, path in image_matches if "product" in alt.lower()), "")
+    image_paths = [path for _, path in image_matches]
+    if not image_product and image_paths:
+        image_product = image_paths[0]
+        if not os.path.exists(image_product):
+            print(f"⚠️ Advertencia: La imagen principal no fue encontrada en la ruta: {image_product}")
+
+            
     pin_table_match = re.search(r'## Pin.*?Layout\n((?:\|.*\n)+)', content)
     pin_table = markdown_table_to_latex(pin_table_match.group(1)) if pin_table_match else "No table."
 
