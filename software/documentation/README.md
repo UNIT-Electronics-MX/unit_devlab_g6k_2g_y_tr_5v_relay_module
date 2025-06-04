@@ -15,7 +15,7 @@ Edita las secciones respetando el orden, sin eliminar los encabezados.
 
 # UNIT Relay Module
 
-![product](./images/top.png)
+![product](images/top.png)
 
 ## Introduction
 
