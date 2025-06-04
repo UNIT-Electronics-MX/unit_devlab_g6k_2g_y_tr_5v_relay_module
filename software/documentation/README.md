@@ -89,7 +89,7 @@ Isolation Resistance: minimum 100 M Ohm at 500 VDC between control and relay sid
 | Power      | JDVCC, VCC, GND                  | Power relay coils and optocoupler driver circuit|
 | Control    | IN1, IN2                         | Trigger signals from MCU                        |
 | Output     | NO1, COM1, NC1 / NO2, COM2, NC2  | Switching terminals for AC/DC load             |
-| Indicators | LED_PWR, LED_IN                  | Visual status of power and input activation     |
+| Indicators | LED PWR, LED_IN                  | Visual status of power and input activation     |
 
 
 
