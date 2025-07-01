@@ -36,9 +36,9 @@ This dual-channel relay module isolates high-power operations from sensitive MCU
 - Operating voltage (logic side): 3.0 V – 5.5 V (via VCC pin)
 - Relay coil voltage: 5 V nominal (via JDVCC)
 - Trigger current per channel: 2–15 mA depending on input logic level
-- Contact rating: Up to 10 A - 250 VAC or 10 A - 30 VDC
+- Contact rating: Up to 0.3 A - 125 VAC or 1 A - 30 VDC
 - Optocoupler logic threshold: Compatible with 3.3 V and 5 V logic
-Isolation Resistance: minimum 100 M Ohm at 500 VDC between control and relay sides.
+- Isolation Resistance: minimum 100 M Ohm at 500 VDC between control and relay sides.
 
 ## Applications
 
@@ -57,7 +57,7 @@ Isolation Resistance: minimum 100 M Ohm at 500 VDC between control and relay sid
 - 3.3V or 5V logic compatibility (VCC)
 - LED indicators for control signal and power presence
 - Breakout access to NO, NC, and COM terminals per channel
-- Supports both AC and DC loads up to 10 A
+- Supports both AC and DC loads up to 1 A
 
 
 ## Pin & Connector Layout
