@@ -47,7 +47,6 @@ This dual-channel relay module isolates high-power operations from sensitive MCU
 - Smart lighting systems
 - Motor or actuator control
 - Security and alarm systems
-- HVAC and environmental controllers
 
 ## Features
 
@@ -57,7 +56,6 @@ This dual-channel relay module isolates high-power operations from sensitive MCU
 - 3.3V or 5V logic compatibility (VCC)
 - LED indicators for control signal and power presence
 - Breakout access to NO, NC, and COM terminals per channel
-- Supports both AC and DC loads up to 1 A
 
 
 ## Pin & Connector Layout
@@ -89,7 +87,7 @@ This dual-channel relay module isolates high-power operations from sensitive MCU
 | Power      | JDVCC, VCC, GND                  | Power relay coils and optocoupler driver circuit|
 | Control    | IN1, IN2                         | Trigger signals from MCU                        |
 | Output     | NO1, COM1, NC1 / NO2, COM2, NC2  | Switching terminals for AC/DC load             |
-| Indicators | LED PWR, LED_IN                  | Visual status of power and input activation     |
+| Indicators | LED (PWR), LED (IN)                  | Visual status of power and input activation     |
 
 
 
