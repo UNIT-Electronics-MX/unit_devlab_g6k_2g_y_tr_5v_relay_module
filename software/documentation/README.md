@@ -38,7 +38,6 @@ This dual-channel relay module isolates high-power operations from sensitive MCU
 - Trigger current per channel: 2–15 mA depending on input logic level
 - Contact rating: Up to 0.3 A - 125 VAC or 1 A - 30 VDC
 - Optocoupler logic threshold: Compatible with 3.3 V and 5 V logic
-- Isolation Resistance: minimum 100 M Ohm at 500 VDC between control and relay sides.
 
 ## Applications
 
