@@ -15,7 +15,7 @@ Edita las secciones respetando el orden, sin eliminar los encabezados.
 
 # UNIT Relay Module
 
-![product](images/top.png)
+![Relay Module](../../hardware/resources/img/relay_module.png)
 
 ## Introduction
 
@@ -107,11 +107,11 @@ This dual-channel relay module isolates high-power operations from sensitive MCU
 
 ## Block Diagram
 
-![Function Diagram](./images/pinout.png)
+![Function Diagram](../../hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_en.png)
 
 ## Dimensions
 
-![Dimensions](./images/dimension.png)
+![Dimensions](../../hardware/resources/unit_dimension_v_0_0_1ue0082_modulo_rele_g6k_.png)
 
 ## Usage
 
@@ -126,7 +126,7 @@ Works with:
 
 ## Downloads
 
-- [Schematic PDF](docs/schematic.pdf)
+[Schematic PDF](../../hardware/unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf)
 
 
 ## Purchase

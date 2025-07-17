@@ -12,10 +12,10 @@ This dual-channel relay module is engineered to safely and reliably interface wi
 
 | Resource              | Link                                                                                                                        |
 |:---------------------:|:---------------------------------------------------------------------------------------------------------------------------:|
-| Wiki-UNIT Electronics | [Wiki - UNIT Electronics]()                  |
-| Github Repository     | [Github Repository](https://github.com/UNIT-Electronics-MX/unit_relay_module_g6k_2g_y_tr_dc5)                                        |
-| Product Brief         | [Product brief]()                 |
-| Schematic             | [Schematic]() |
+| Wiki-UNIT Electronics | [Wiki - UNIT Electronics](https://unit-electronics-mx.github.io/wiki_uelectronics/docs/Modules/relay/)                      |
+| Github Repository     | [Github Repository](https://github.com/UNIT-Electronics-MX/unit_relay_module_g6k_2g_y_tr_dc5)                               |
+| Product Brief         | [Product brief](docs/unit_relay_module_g6k_2g_y_tr_dc5_product_brief.pdf)                                                   |
+| Schematic             | [Schematic](hardware/unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf)                                                           |
 
 </div>
 
