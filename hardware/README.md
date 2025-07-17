@@ -1,7 +1,7 @@
 # Hardware
 
 <div align="center">
-    <a href="#"><img src="resources/img/Schematics_icon.jpg" width="400px"><br/>Schematic</a>
+    <a href="resources/img/Schematics_icon.jpg"><img src="resources/img/Schematics_icon.jpg" width="400px"><br/>Schematic</a>
     <br/>
 
 </div>
@@ -9,11 +9,12 @@
 # Pinout
 
 <div align="center">
-    <a href="#"><img src="resources/UE0082-PINOUT-UNIT_G6K-2G-Y-TR DC5-RELAY-EN.png" width="500px"><br/>Pinout</a>
+    <a href="resources/unit_pinout_v_0_0_1_ue0082_relay_en.jpg"><img src="resources/unit_pinout_v_0_0_1_ue0082_relay_en.jpg" width="500px"><br/>Pinout</a>
     <br/>
-
-
+    <br/>
 </div>
+
+<div align="center">
 
 | Function                    | PCB Label | Description                                                      |
 |-----------------------------|-----------|------------------------------------------------------------------|
@@ -29,12 +30,26 @@
 | Power indicator LED         | LED_PWR   | Lights whenever the module is powered (JDVCC present)            |
 | Input-signal indicator LED  | LED_IN    | Lights or flashes to show an active IN signal from the MCU       |
 
+</div>
+
+
 ---
 
 # Dimensions
 
 <div align="center">
-    <a href="#"><img src="resources/dimensions.png" width="500px"><br/>Dimensions</a>
+    <a href="resources/dimensions.png"><img src="resources/dimensions.png" width="500px"><br/>Dimensions</a>
+    <br/>
+
+
+</div>
+
+---
+
+# Topology
+
+<div align="center">
+    <a href="resources/unit_topology_v_0_0_1ue0082_modulo_rele_g6k_.png"><img src="resources/unit_topology_v_0_0_1ue0082_modulo_rele_g6k_.png" width="500px"><br/>Topology</a>
     <br/>
 
 
