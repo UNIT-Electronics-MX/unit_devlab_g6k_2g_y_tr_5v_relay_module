@@ -13,6 +13,7 @@ permissions:
 jobs:
   build-doc:
     runs-on: ubuntu-latest
+    timeout-minutes: 30  # Timeout después de 30 minutos
 
     steps:
     - name: Checkout repository
@@ -28,10 +29,41 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r software/documentation/requirements.txt
 
-    - name: Install LaTeX and Ghostscript
+    - name: Cache LaTeX packages
+      uses: actions/cache@v4
+      with:
+        path: |
+          /usr/share/texlive
+          /usr/share/texmf
+          /var/lib/texmf
+        key: texlive-${{ runner.os }}-v2
+        restore-keys: |
+          texlive-${{ runner.os }}-
+
+    - name: Install LaTeX and Ghostscript (optimized)
       run: |
-        sudo apt-get update
-        sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-lang-english ghostscript
+        echo "🔄 Iniciando instalación de LaTeX..."
+        start_time=$(date +%s)
+        
+        # Usar cache del sistema y optimizar instalación
+        sudo apt-get update -qq
+        
+        echo "📦 Instalando paquetes LaTeX esenciales..."
+        # Instalar solo los paquetes esenciales para LaTeX
+        sudo apt-get install -y --no-install-recommends \
+          texlive-latex-base \
+          texlive-latex-recommended \
+          texlive-fonts-recommended \
+          texlive-latex-extra \
+          ghostscript \
+          poppler-utils
+        
+        # Limpiar cache para reducir espacio
+        sudo apt-get clean
+        
+        end_time=$(date +%s)
+        elapsed=$((end_time - start_time))
+        echo "✅ LaTeX y Ghostscript instalados en ${elapsed}s"
 
 
       
