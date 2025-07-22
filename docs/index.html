@@ -310,15 +310,20 @@
             ]
         };
 
-        // Known files that should be in docs/ (will be updated by automation)
+        // Known files that should be in docs/
         const KNOWN_FILES = [
             {
                 name: 'Product Brief PDF',
-                url: `${REPO_NAME}_product_brief.pdf`,
+                url: `unit_relay_module_g6k_2g_y_tr_dc5_product_brief.pdf`,
                 type: 'documentation',
                 icon: '📋'
+            },
+            {
+                name: 'Schematic PDF',
+                url: 'unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf',
+                type: 'schematics',
+                icon: '⚡'
             }
-            // Additional schematic files will be added by automation
         ];
 
         // Load known files first
@@ -331,7 +336,10 @@
             KNOWN_FILES.forEach(file => {
                 const container = containers[file.type];
                 if (container) {
-                    container.innerHTML = '';
+                    // Clear loading message if it exists
+                    const loading = container.querySelector('.loading');
+                    if (loading) loading.style.display = 'none';
+                    
                     const link = document.createElement('a');
                     link.href = file.url;
                     link.className = file.type === 'documentation' ? 'download-link' : 'download-link schematic';

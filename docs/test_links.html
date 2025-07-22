@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Enlaces</title>
+</head>
+<body>
+    <h1>Test de Enlaces</h1>
+    
+    <h2>Enlaces relativos desde docs/:</h2>
+    <ul>
+        <li><a href="unit_relay_module_g6k_2g_y_tr_dc5_product_brief.pdf" target="_blank">Product Brief PDF</a></li>
+        <li><a href="unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf" target="_blank">Schematic PDF</a></li>
+    </ul>
+    
+    <h2>Archivos disponibles:</h2>
+    <script>
+        // Verificar si los archivos existen
+        async function checkFiles() {
+            const files = [
+                'unit_relay_module_g6k_2g_y_tr_dc5_product_brief.pdf',
+                'unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf'
+            ];
+            
+            for (const file of files) {
+                try {
+                    const response = await fetch(file, { method: 'HEAD' });
+                    console.log(`${file}: ${response.ok ? 'EXISTS' : 'NOT FOUND'}`);
+                    document.write(`<p>${file}: ${response.ok ? '✅ EXISTS' : '❌ NOT FOUND'}</p>`);
+                } catch (error) {
+                    console.log(`${file}: ERROR - ${error}`);
+                    document.write(`<p>${file}: ❌ ERROR - ${error}</p>`);
+                }
+            }
+        }
+        
+        checkFiles();
+    </script>
+</body>
+</html>
