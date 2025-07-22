@@ -105,6 +105,26 @@ jobs:
         # Mostrar contenido final de docs/
         echo "📁 Contenido de docs/:"
         ls -la docs/
+        
+        # Actualizar timestamp en index.html si existe, o generarlo si no existe
+        if [ -f "docs/index.html" ]; then
+          echo "🔄 Actualizando timestamp en index.html..."
+          current_time=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          sed -i "s/Last generated: .*/Last generated: $current_time<\/span>/" docs/index.html
+          echo "✅ Timestamp actualizado: $current_time"
+        else
+          echo "⚠️ docs/index.html no encontrado, generando desde template..."
+          cd software/documentation
+          if [ -f "index_template.html" ]; then
+            python generate_index.py
+            echo "✅ index.html generado desde template"
+          else
+            echo "❌ Template no encontrado, creando index.html básico"
+            mkdir -p ../../docs
+            echo "<!DOCTYPE html><html><head><title>Documentation</title></head><body><h1>Documentation Portal</h1><p>Portal will be regenerated automatically.</p></body></html>" > ../../docs/index.html
+          fi
+          cd ../..
+        fi
 
 
     - name: Commit and push PDF to docs/ (only on main)
@@ -115,5 +135,6 @@ jobs:
         git pull origin main
         git add docs/${{ github.event.repository.name }}_product_brief.pdf
         git add docs/*.pdf  # Incluir todos los PDFs (esquemáticos)
-        git commit -m "Publish compressed PDF and schematics [skip ci]" || echo "No changes to commit"
+        git add docs/index.html  # Incluir index.html actualizado
+        git commit -m "Publish compressed PDF, schematics and updated documentation portal [skip ci]" || echo "No changes to commit"
         git push origin main

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT Relay Module - Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .repo-info {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .repo-info:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            font-size: 1.8em;
+        }
+
+        .download-link {
+            display: block;
+            background: #e74c3c;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .download-link:hover {
+            background: #c0392b;
+            transform: translateX(5px);
+        }
+
+        .download-link.schematic {
+            background: #f39c12;
+        }
+
+        .download-link.schematic:hover {
+            background: #e67e22;
+        }
+
+        .resource-link {
+            display: block;
+            color: #3498db;
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+            transition: color 0.3s ease;
+        }
+
+        .resource-link:hover {
+            color: #2980b9;
+        }
+
+        .resource-link:last-child {
+            border-bottom: none;
+        }
+
+        .stats {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .stat-item {
+            display: inline-block;
+            margin: 0 15px;
+            padding: 10px;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+            display: block;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+        }
+
+        .error {
+            background: #e74c3c;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔌 UNIT Relay Module</h1>
+            <p>Dual-channel relay module for microcontroller applications</p>
+            <a href="#" class="repo-info" id="repoLink">
+                📁 View on GitHub
+            </a>
+        </div>
+
+        <div class="grid">
+            <!-- Documentation Card -->
+            <div class="card">
+                <h2>📖 Documentation</h2>
+                <div id="documentationLinks">
+                    <div class="loading">Loading documentation...</div>
+                </div>
+            </div>
+
+            <!-- Schematics Card -->
+            <div class="card">
+                <h2>⚡ Schematics</h2>
+                <div id="schematicLinks">
+                    <div class="loading">Loading schematics...</div>
+                </div>
+            </div>
+
+            <!-- Hardware Resources Card -->
+            <div class="card">
+                <h2>🔧 Hardware Resources</h2>
+                <div id="hardwareLinks">
+                    <div class="loading">Loading hardware resources...</div>
+                </div>
+            </div>
+
+            <!-- Software Examples Card -->
+            <div class="card">
+                <h2>💻 Software Examples</h2>
+                <div id="softwareLinks">
+                    <div class="loading">Loading software examples...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <h3>📊 Repository Statistics</h3>
+            <div class="stat-item">
+                <span class="stat-number" id="fileCount">-</span>
+                <span class="stat-label">Files</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="lastUpdate">-</span>
+                <span class="stat-label">Last Updated</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 UNIT Electronics - Automated Documentation Portal</p>
+        <p>Last generated: <span id="generationTime"></span></p>
+    </div>
+
+    <script>
+        // Configuration
+        const REPO_OWNER = 'UNIT-Electronics-MX';
+        const REPO_NAME = 'unit_relay_module_g6k_2g_y_tr_dc5';  // Template variable for automation
+        const DOCS_BASE_URL = `https://${REPO_OWNER}.github.io/${REPO_NAME}`;
+        const GITHUB_BASE_URL = `https://github.com/${REPO_OWNER}/${REPO_NAME}`;
+
+        // Set generation time
+        document.getElementById('generationTime').textContent = new Date().toLocaleString();
+
+        // Set repository link
+        document.getElementById('repoLink').href = GITHUB_BASE_URL;
+
+        // File patterns to look for
+        const FILE_PATTERNS = {
+            documentation: [
+                { pattern: /.*product_brief\.pdf$/i, name: 'Product Brief', icon: '📋' },
+                { pattern: /.*datasheet\.pdf$/i, name: 'Datasheet', icon: '📊' },
+                { pattern: /README\.md$/i, name: 'README', icon: '📖' }
+            ],
+            schematics: [
+                { pattern: /.*sch.*\.pdf$/i, name: 'Schematic', icon: '⚡' },
+                { pattern: /.*schematic.*\.pdf$/i, name: 'Schematic', icon: '⚡' },
+                { pattern: /.*circuit.*\.pdf$/i, name: 'Circuit Diagram', icon: '🔌' }
+            ],
+            hardware: [
+                { pattern: /.*pinout.*\.(png|jpg|jpeg)$/i, name: 'Pinout Diagram', icon: '📌' },
+                { pattern: /.*dimension.*\.(png|jpg|jpeg)$/i, name: 'Dimensions', icon: '📏' },
+                { pattern: /.*top.*\.(png|jpg|jpeg)$/i, name: 'Top View', icon: '🔝' },
+                { pattern: /.*bottom.*\.(png|jpg|jpeg)$/i, name: 'Bottom View', icon: '🔽' },
+                { pattern: /.*topology.*\.(png|jpg|jpeg)$/i, name: 'Topology', icon: '🌐' }
+            ],
+            software: [
+                { pattern: /.*\.ino$/i, name: 'Arduino Code', icon: '🤖' },
+                { pattern: /.*\.py$/i, name: 'Python Code', icon: '🐍' },
+                { pattern: /.*\.c$/i, name: 'C Code', icon: '⚙️' },
+                { pattern: /.*\.cpp$/i, name: 'C++ Code', icon: '⚙️' }
+            ]
+        };
+
+        // Known files that should be in docs/ (will be updated by automation)
+        const KNOWN_FILES = [
+            {
+                name: 'Product Brief PDF',
+                url: `${REPO_NAME}_product_brief.pdf`,
+                type: 'documentation',
+                icon: '📋'
+            }
+            // Additional schematic files will be added by automation
+        ];
+
+        // Load known files first
+        function loadKnownFiles() {
+            const containers = {
+                documentation: document.getElementById('documentationLinks'),
+                schematics: document.getElementById('schematicLinks')
+            };
+
+            KNOWN_FILES.forEach(file => {
+                const container = containers[file.type];
+                if (container) {
+                    container.innerHTML = '';
+                    const link = document.createElement('a');
+                    link.href = file.url;
+                    link.className = file.type === 'documentation' ? 'download-link' : 'download-link schematic';
+                    link.innerHTML = `${file.icon} ${file.name}`;
+                    link.target = '_blank';
+                    container.appendChild(link);
+                }
+            });
+        }
+
+        // Try to fetch GitHub API data
+        async function loadFromGitHub() {
+            try {
+                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`);
+                if (!response.ok) throw new Error('GitHub API request failed');
+                
+                const data = await response.json();
+                console.log('Repository contents loaded from GitHub API');
+                
+                // Process the data
+                await processDirectoryContents(data, '');
+                
+                // Update stats
+                document.getElementById('fileCount').textContent = data.length;
+                
+            } catch (error) {
+                console.log('GitHub API not available, using known files only');
+                loadFallbackContent();
+            }
+        }
+
+        // Process directory contents recursively
+        async function processDirectoryContents(contents, basePath) {
+            for (const item of contents) {
+                if (item.type === 'file') {
+                    categorizeAndAddFile(item.name, basePath + item.name, item.download_url);
+                } else if (item.type === 'dir' && ['hardware', 'software'].includes(item.name)) {
+                    try {
+                        const dirResponse = await fetch(item.url);
+                        const dirContents = await dirResponse.json();
+                        await processDirectoryContents(dirContents, basePath + item.name + '/');
+                    } catch (error) {
+                        console.log(`Could not load directory: ${item.name}`);
+                    }
+                }
+            }
+        }
+
+        // Categorize and add file to appropriate section
+        function categorizeAndAddFile(filename, fullPath, downloadUrl) {
+            Object.entries(FILE_PATTERNS).forEach(([category, patterns]) => {
+                patterns.forEach(pattern => {
+                    if (pattern.pattern.test(filename)) {
+                        addFileToCategory(category, {
+                            name: pattern.name,
+                            filename: filename,
+                            url: downloadUrl || `${GITHUB_BASE_URL}/raw/main/${fullPath}`,
+                            icon: pattern.icon
+                        });
+                    }
+                });
+            });
+        }
+
+        // Add file to category
+        function addFileToCategory(category, file) {
+            const containerId = category + 'Links';
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            // Clear loading message
+            const loading = container.querySelector('.loading');
+            if (loading) loading.style.display = 'none';
+
+            // Check if already exists
+            const existing = Array.from(container.children).find(child => 
+                child.textContent.includes(file.filename)
+            );
+            if (existing) return;
+
+            const link = document.createElement('a');
+            
+            if (category === 'documentation' || category === 'schematics') {
+                link.className = category === 'documentation' ? 'download-link' : 'download-link schematic';
+                link.innerHTML = `${file.icon} ${file.name}`;
+            } else {
+                link.className = 'resource-link';
+                link.innerHTML = `${file.icon} ${file.filename}`;
+            }
+            
+            link.href = file.url;
+            link.target = '_blank';
+            container.appendChild(link);
+        }
+
+        // Load fallback content when GitHub API is not available
+        function loadFallbackContent() {
+            // Hardware resources
+            const hardwareContainer = document.getElementById('hardwareLinks');
+            hardwareContainer.innerHTML = `
+                <a href="${GITHUB_BASE_URL}/tree/main/hardware/resources" class="resource-link" target="_blank">
+                    📁 Browse Hardware Resources
+                </a>
+                <a href="${GITHUB_BASE_URL}/blob/main/hardware/README.md" class="resource-link" target="_blank">
+                    📖 Hardware Documentation
+                </a>
+            `;
+
+            // Software examples
+            const softwareContainer = document.getElementById('softwareLinks');
+            softwareContainer.innerHTML = `
+                <a href="${GITHUB_BASE_URL}/tree/main/software/examples" class="resource-link" target="_blank">
+                    📁 Browse Code Examples
+                </a>
+                <a href="${GITHUB_BASE_URL}/tree/main/software/examples/c_code" class="resource-link" target="_blank">
+                    🤖 Arduino Examples
+                </a>
+                <a href="${GITHUB_BASE_URL}/tree/main/software/examples/python_code" class="resource-link" target="_blank">
+                    🐍 Python Examples
+                </a>
+            `;
+
+            // Update stats
+            document.getElementById('fileCount').textContent = 'N/A';
+        }
+
+        // Initialize
+        function init() {
+            loadKnownFiles();
+            loadFromGitHub();
+            
+            // Set last update
+            document.getElementById('lastUpdate').textContent = 'Today';
+        }
+
+        // Run when page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
