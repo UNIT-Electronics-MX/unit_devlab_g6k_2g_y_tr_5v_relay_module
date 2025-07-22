@@ -87,6 +87,24 @@ jobs:
       run: |
         mkdir -p docs
         cp software/documentation/build/${{ github.event.repository.name }}_product_brief.pdf docs/
+        
+        # Buscar y copiar archivos de esquemático
+        echo "🔄 Buscando archivos de esquemático..."
+        schematic_files=$(find hardware/ -name "*sch*.pdf" -type f 2>/dev/null || true)
+        if [ -n "$schematic_files" ]; then
+          echo "✅ Copiando archivos de esquemático:"
+          for file in $schematic_files; do
+            filename=$(basename "$file")
+            cp "$file" docs/
+            echo "  - $filename"
+          done
+        else
+          echo "⚠️ No se encontraron archivos de esquemático"
+        fi
+        
+        # Mostrar contenido final de docs/
+        echo "📁 Contenido de docs/:"
+        ls -la docs/
 
 
     - name: Commit and push PDF to docs/ (only on main)
@@ -96,5 +114,6 @@ jobs:
         git config --global user.email "actions@github.com"
         git pull origin main
         git add docs/${{ github.event.repository.name }}_product_brief.pdf
-        git commit -m "Publish compressed PDF [skip ci]" || echo "No changes to commit"
+        git add docs/*.pdf  # Incluir todos los PDFs (esquemáticos)
+        git commit -m "Publish compressed PDF and schematics [skip ci]" || echo "No changes to commit"
         git push origin main

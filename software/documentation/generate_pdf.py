@@ -4,6 +4,8 @@ import re
 import subprocess
 import markdown2
 import yaml
+import shutil
+import glob
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -43,6 +45,23 @@ def markdown_links_to_latex_list(text):
     return "\\begin{itemize}\n" + "\n".join([f"\\item \\href{{{url}}}{{{label}}}" for label, url in items]) + "\n\\end{itemize}"
 
 
+def markdown_individual_links_to_latex(text):
+    """Maneja enlaces individuales sin viñetas y también enlaces con viñetas"""
+    # Primero buscar enlaces con viñetas
+    bullet_items = re.findall(r'- \[(.*?)\]\((.*?)\)', text)
+    
+    # Si encontramos enlaces con viñetas, usamos esos
+    if bullet_items:
+        return "\\begin{itemize}\n" + "\n".join([f"\\item \\href{{{url}}}{{{label}}}" for label, url in bullet_items]) + "\n\\end{itemize}"
+    
+    # Si no hay enlaces con viñetas, buscar enlaces individuales
+    individual_links = re.findall(r'\[(.*?)\]\((.*?)\)', text)
+    if individual_links:
+        return "\\begin{itemize}\n" + "\n".join([f"\\item \\href{{{url}}}{{{label}}}" for label, url in individual_links]) + "\n\\end{itemize}"
+    
+    return ""
+
+
 def markdown_bullets_to_latex(text):
     lines = text.strip().splitlines()
     items = [
@@ -69,7 +88,7 @@ def extract_section(heading, content):
 
 def extract_links_section(heading, content):
     section = extract_section(heading, content)
-    return markdown_links_to_latex_list(section)
+    return markdown_individual_links_to_latex(section)
 
 
 def extract_table(heading, content):
@@ -102,7 +121,6 @@ def parse_readme_md(path):
     cdmx_now = datetime.now(ZoneInfo("America/Mexico_City"))
     formatted_date = cdmx_now.strftime("%Y-%m-%d %H:%M")
 
-
     with open(path, 'r', encoding='utf-8') as f:
         content = f.read()
 
@@ -111,6 +129,15 @@ def parse_readme_md(path):
     frontmatter_match = re.match(r'^---(.*?)---', content, re.DOTALL)
     frontmatter = yaml.safe_load(frontmatter_match.group(1)) if frontmatter_match else {}
     content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
+
+    # Copiar archivos basándose en la configuración YAML
+    print("🔄 Procesando archivos configurados en YAML...")
+    copied_files = copy_files_from_config(frontmatter)
+
+    # Actualizar enlaces si se copiaron archivos
+    if copied_files:
+        print("🔄 Actualizando enlaces...")
+        content = update_links_from_config(content, copied_files)
 
 
     image_matches = re.findall(r'!\[(.*?)\]\((.*?)\)', content)
@@ -211,6 +238,88 @@ def clean_aux_files(output_name):
         if os.path.exists(path):
             os.remove(path)
 
+
+def copy_files_from_config(frontmatter):
+    """
+    Copia archivos basándose en la configuración en el frontmatter YAML
+    """
+    copy_files = frontmatter.get("copy_files", [])
+    if not copy_files:
+        print("ℹ️ No hay archivos configurados para copiar en el YAML")
+        return []
+    
+    copied_files = []
+    for file_config in copy_files:
+        source = file_config.get("source")
+        destination = file_config.get("destination")
+        link_name = file_config.get("link_name")
+        
+        if not all([source, destination, link_name]):
+            print(f"⚠️ Configuración incompleta para archivo: {file_config}")
+            continue
+            
+        # Crear la carpeta de destino si no existe
+        os.makedirs(destination, exist_ok=True)
+        
+        # Nombre del archivo de destino
+        filename = os.path.basename(source)
+        dest_path = os.path.join(destination, filename)
+        
+        try:
+            shutil.copy2(source, dest_path)
+            print(f"✅ Archivo copiado: {filename} -> {destination}")
+            copied_files.append({
+                'filename': filename,
+                'link_name': link_name,
+                'source': source,
+                'destination': dest_path
+            })
+        except Exception as e:
+            print(f"⚠️ Error copiando {source}: {e}")
+    
+    return copied_files
+
+
+def update_links_from_config(content, copied_files):
+    """
+    Actualiza los enlaces en el contenido basándose en los archivos copiados
+    """
+    updated_content = content
+    
+    for file_info in copied_files:
+        link_name = file_info['link_name']
+        
+        # Buscar cualquier enlace que apunte a este archivo y actualizarlo
+        # Patrón para enlaces con diferentes rutas posibles
+        patterns = [
+            rf'\[([^\]]*)\]\(\.\./\.\./hardware/{re.escape(link_name)}\)',
+            rf'\[([^\]]*)\]\(hardware/{re.escape(link_name)}\)',
+            rf'\[([^\]]*)\]\(docs/{re.escape(link_name)}\)',
+            rf'\[([^\]]*)\]\([^)]*{re.escape(link_name)}\)'
+        ]
+        
+        for pattern in patterns:
+            replacement = rf'[\1]({link_name})'
+            updated_content = re.sub(pattern, replacement, updated_content)
+    
+    return updated_content
+
+
+def adjust_links_for_final_location(content, copied_files):
+    """
+    Ajusta los enlaces para que funcionen desde la ubicación final del PDF en docs/
+    Ambos archivos (PDF y esquemático) estarán en la misma carpeta docs/
+    """
+    updated_content = content
+    
+    for filename in copied_files:
+        # Cambiar enlaces de docs/filename a solo filename (misma carpeta)
+        docs_pattern = rf'(\[([^\]]*)\])\(docs/{re.escape(filename)}\)'
+        same_folder_replacement = rf'\1({filename})'
+        updated_content = re.sub(docs_pattern, same_folder_replacement, updated_content)
+    
+    return updated_content
+
 if __name__ == "__main__":
     data = parse_readme_md("README.md")  # asegúrate de definir 'data' aquí
     output_name = data["OUTPUT_NAME"]    # luego la usas aquí
@@ -221,3 +330,6 @@ if __name__ == "__main__":
     render_latex("product_brief_template.tex", output_tex, data)
     compile_pdf(output_tex)
     clean_aux_files(f"build/{output_name}")
+    
+    print(f"🎉 PDF generado exitosamente: build/{output_name}.pdf")
+    print(f"📄 El workflow de GitHub Actions copiará los archivos necesarios a docs/")
