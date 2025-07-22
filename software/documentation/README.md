@@ -4,6 +4,10 @@ version: "1.0"
 modified: "2025-05-02"
 output: "relay_module"
 subtitle: "This dual-channel relay module safely interfaces microcontrollers with higher-voltage or high-current loads by separating control from power."
+copy_files:
+  - source: "../../hardware/unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf"
+    destination: "../../docs/"
+    link_name: "unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf"
 ---
 
 <!--
@@ -15,7 +19,7 @@ Edita las secciones respetando el orden, sin eliminar los encabezados.
 
 # UNIT Relay Module
 
-![product](images/top.png)
+![Relay Module](../../hardware/resources/img/relay_module.png)
 
 ## Introduction
 
@@ -107,11 +111,11 @@ This dual-channel relay module isolates high-power operations from sensitive MCU
 
 ## Block Diagram
 
-![Function Diagram](./images/pinout.png)
+![Function Diagram](../../hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_en.png)
 
 ## Dimensions
 
-![Dimensions](./images/dimension.png)
+![Dimensions](../../hardware/resources/unit_dimension_v_0_0_1ue0082_modulo_rele_g6k_.png)
 
 ## Usage
 
@@ -126,7 +130,7 @@ Works with:
 
 ## Downloads
 
-- [Schematic PDF](docs/schematic.pdf)
+[Schematic PDF](unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf)
 
 
 ## Purchase

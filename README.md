@@ -6,6 +6,18 @@ This dual-channel relay module is engineered to safely and reliably interface wi
     <a href="./unit_relay_module_g6k_2g_y_tr_dc5.pdf"><img src="hardware/resources/img/relay_module.png" width="400px"><br/> UNIT Relay Module</a>
 </div>
 
+## Additional Resources
+
+<div align="center">
+
+| Resource              | Link                                                                                                                        |
+|:---------------------:|:---------------------------------------------------------------------------------------------------------------------------:|
+| Wiki-UNIT Electronics | [Wiki - UNIT Electronics](https://unit-electronics-mx.github.io/wiki_uelectronics/docs/Modules/relay/)                      |
+| Github Repository     | [Github Repository](https://github.com/UNIT-Electronics-MX/unit_relay_module_g6k_2g_y_tr_dc5)                               |
+| Product Brief         | [Product brief](docs/unit_relay_module_g6k_2g_y_tr_dc5_product_brief.pdf)                                                   |
+| Schematic             | [Schematic](hardware/unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf)                                                           |
+
+</div>
 
 ## **Features**
 - **2 × 5 V relays** with Normally Open (NO) and Normally Closed (NC) contacts  
@@ -78,8 +90,8 @@ For any issues or further assistance, please open an issue on the GitHub reposit
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Resources
-- [Product brief](./unit_relay_module_g6k_2g_y_tr_dc5.pdf)
-- [Schematic](./hardware/UE0089-SCH-G6K-2G-Y-TR-DC5-001-T.pdf)
+- [Product brief](docs/unit_relay_module_g6k_2g_y_tr_dc5_product_brief.pdf)
+- [Schematic](hardware/unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf)
 
 
 
