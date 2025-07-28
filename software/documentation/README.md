@@ -124,13 +124,14 @@ Works with:
 - Arduino AVR
 - Raspberry Pi RP2040
 - STM32
-- NRF
 - PY32
-- MAX II 
+
 
 ## Downloads
 
-[Schematic PDF](unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf)
+- [Schematic PDF](https://github.com/UNIT-Electronics-MX/unit_relay_module_g6k_2g_y_tr_dc5/blob/main/hardware/unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf)
+
+- [Board Dimensions](https://github.com/UNIT-Electronics-MX/unit_relay_module_g6k_2g_y_tr_dc5/tree/main/hardware#dimensions)
 
 
 ## Purchase
