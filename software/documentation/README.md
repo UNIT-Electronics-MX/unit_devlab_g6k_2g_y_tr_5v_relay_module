@@ -45,11 +45,16 @@ This dual-channel relay module isolates high-power operations from sensitive MCU
 
 ## Applications
 
-- Home automation and IoT-based appliance control
-- Industrial machinery switching
-- Smart lighting systems
-- Motor or actuator control
-- Security and alarm systems
+- Home Automation
+- IoT Projects
+- Automated Irrigation
+- Testing & Laboratory
+- Robotics & Mechatronics
+- Smart Agriculture
+- Security & Alarm Systems
+- Education & Demos
+
+
 
 ## Features
 
