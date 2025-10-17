@@ -6,6 +6,8 @@
 
 </div>
 
+
+
 # Pinout
 
 <div align="center">
@@ -32,6 +34,18 @@
 
 </div>
 
+---
+
+## **Important: Active Low Logic**
+
+This relay module implements **optocoupler-based inverted logic**. The relay coils are energized when the control input (IN) receives a **LOW signal (0V)**, which is opposite to conventional direct relay control.
+
+**Control Logic:**
+- **Relay Energized (ON)**: IN pin = LOW (0V)
+- **Relay De-energized (OFF)**: IN pin = HIGH (~VCC)
+
+**Technical Reason:**  
+The optocoupler isolates the MCU from the relay coil circuit. When the IN pin is driven LOW, current flows through the optocoupler LED, activating the output transistor which energizes the relay coil.
 
 ---
 

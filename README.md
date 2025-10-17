@@ -1,22 +1,33 @@
-# DThis dual-channel relay module is engineered to safely and reliably interface with microcontrollers that manage higher-voltage or higher-current loads. It provides a dedicated 5V supply for powering the relay coils while the logic supply is aligned with the microcontroller's I/O voltage (3.3V or 5V). The module accepts digital control signals to toggle the relays, and the relay contacts are designed with both normally-open (NO) and normally-closed (NC) configurations, offering versatile switching options.vLab: G6K-2G-Y-TR 5V Relay Module
-
+# DevLab: G6K-2G-Y-TR 5V Relay Module
 
 This dual-channel relay module is engineered to safely and reliably interface with microcontrollers that manage higher-voltage or higher-current loads. It provides a dedicated 5 V supply for powering the relay coils while the logic supply is aligned with the microcontroller’s I/O voltage (3.3 V or 5 V). The module accepts digital control signals to toggle the relays, and the relay contacts are designed with both normally-open (NO) and normally-closed (NC) configurations, offering versatile switching options.
+
+
+<div align="center">
+  <a href="#"><img src="https://img.shields.io/badge/version-1.0-blue.svg" alt="Version"></a>
+  <a href="#"><img src="https://img.shields.io/badge/language-Python-lightgrey.svg" alt="Language"></a>
+  <a href="#"><img src="https://img.shields.io/badge/language-C-lightgrey.svg" alt="Language"></a>
+  <a href="#"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
+  <br>
+</div>
 
 <div align="center">
     <a href="#"><img src="hardware/resources/unit_top_v_0_0_1ue0082_modulo_rele_g6k_.png" width="400px"><br/> UNIT Relay Module</a>
 </div>
 
-## Additional Resources
 
 <div align="center">
 
-| Resource              | Link                                                                                                                        |
-|:---------------------:|:---------------------------------------------------------------------------------------------------------------------------:|
-| Wiki-UNIT Electronics | [Wiki - UNIT Electronics](https://unit-electronics-mx.github.io/wiki_uelectronics/docs/Modules/relay/)                      |
-| Github Repository     | [Github Repository](https://github.com/UNIT-Electronics-MX/unit_relay_module_g6k_2g_y_tr_dc5)                               |
-| Product Brief         | [Product brief](docs/unit_relay_module_g6k_2g_y_tr_dc5_product_brief.pdf)                                                   |
-| Schematic             | [Schematic](hardware/unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf)                                                           |
+### Quick Setup
+
+
+[<img src="https://img.shields.io/badge/Product%20Wiki-blue?style=for-the-badge" alt="Product Wiki">](#)
+[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](#)
+[<img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now">](#)
+[<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](#)
+
+</div>
+
 
 </div>
 
@@ -25,27 +36,7 @@ This dual-channel relay module is engineered to safely and reliably interface wi
 - **Optical isolation** between control (logic) and power (coil) sides  
 - **LED indicators**: one for power and one per channel  
 - Compatible with **3.3V or 5V logic**  
-- **Screw terminals** for secure connection of power loads    
-
-
-## **Description** 
-
-<div align="center">
-
-| Signal         | Description                                                                  |
-|----------------|------------------------------------------------------------------------------|
-| JDVCC          | +5V for relay coils; isolated from MCU logic, enabling 3.3V systems.        |
-| VCC            | Powers input drivers; must match MCU voltage (3.3V or 5V).                  |
-| IN             | MCU signal; low (0V) activates the optocoupler.                             |
-| NO1 / NO2      | Normally open contacts; close only when the relay is energized.             |
-| COM1 / COM2    | Common terminal toggling between NC and NO.                                 |
-| NC1 / NC2      | Normally closed contacts; open when the relay is active.                    |
-| LED_PWR        | LED showing JDVCC (5V) presence.                                            |
-| LED_IN         | LED indicating control signal activity from IN.                             |
-
-</div>
-
-
+- **Screw terminals** for secure connection of power loads
 
 ## Common Applications
 

@@ -2,6 +2,8 @@
 
 This sketch toggles a single‐channel relay on and off every second and prints the current state of both the **Normally Open (NO)** and **Normally Closed (NC)** contacts to the serial console.
 
+**Note:** This relay module uses active LOW logic. The relay energizes when the IN pin is LOW (0V).
+
 ---
 
 ## Hardware Setup

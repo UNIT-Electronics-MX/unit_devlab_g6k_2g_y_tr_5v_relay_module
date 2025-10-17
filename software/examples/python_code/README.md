@@ -2,6 +2,8 @@
 
 This sketch demonstrates how to blink a single‑channel relay in MicroPython without using blocking delays. Instead of halting the entire program with `sleep`, we use timestamp comparisons (`utime.ticks_ms()` and `utime.ticks_diff()`) to toggle the relay and print its state, while leaving the main loop free to perform other tasks.
 
+**Note:** This relay module uses active LOW logic. The relay energizes when the pin value is 0.
+
 ## Prerequisites
 
 - A MicroPython‑capable board (e.g., ESP8266, ESP32, Raspberry Pi Pico).  
