@@ -15,14 +15,14 @@ void setup() {
 }
 
 void loop() {
-  // --- HIGH ---
-  digitalWrite(IN_PIN, HIGH);
+  // --- LOW (Relay ON) ---
+  digitalWrite(IN_PIN, LOW);
   Serial.print("NO: On ");
   Serial.println("NC: Off");
   delay(T);
 
-  // --- LOW ---
-  digitalWrite(IN_PIN, LOW);
+  // --- HIGH (Relay OFF) ---
+  digitalWrite(IN_PIN, HIGH);
   Serial.print("NO: Off ");
   Serial.println("NC: On");
   delay(T);

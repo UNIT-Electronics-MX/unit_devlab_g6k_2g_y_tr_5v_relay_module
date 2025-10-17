@@ -42,7 +42,7 @@ jobs:
 
     - name: Install LaTeX and Ghostscript (optimized)
       run: |
-        echo "🔄 Iniciando instalación de LaTeX..."
+        echo " Iniciando instalación de LaTeX..."
         start_time=$(date +%s)
         
         # Usar cache del sistema y optimizar instalación
@@ -63,7 +63,7 @@ jobs:
         
         end_time=$(date +%s)
         elapsed=$((end_time - start_time))
-        echo "✅ LaTeX y Ghostscript instalados en ${elapsed}s"
+        echo "LaTeX y Ghostscript instalados en ${elapsed}s"
 
 
       
@@ -121,35 +121,35 @@ jobs:
         cp software/documentation/build/${{ github.event.repository.name }}_product_brief.pdf docs/
         
         # Buscar y copiar archivos de esquemático
-        echo "🔄 Buscando archivos de esquemático..."
+        echo " Buscando archivos de esquemático..."
         schematic_files=$(find hardware/ -name "*sch*.pdf" -type f 2>/dev/null || true)
         if [ -n "$schematic_files" ]; then
-          echo "✅ Copiando archivos de esquemático:"
+          echo "Copiando archivos de esquemático:"
           for file in $schematic_files; do
             filename=$(basename "$file")
             cp "$file" docs/
             echo "  - $filename"
           done
         else
-          echo "⚠️ No se encontraron archivos de esquemático"
+          echo " No se encontraron archivos de esquemático"
         fi
         
         # Mostrar contenido final de docs/
-        echo "📁 Contenido de docs/:"
+        echo " Contenido de docs/:"
         ls -la docs/
         
         # Actualizar timestamp en index.html si existe, o generarlo si no existe
         if [ -f "docs/index.html" ]; then
-          echo "🔄 Actualizando timestamp en index.html..."
+          echo " Actualizando timestamp en index.html..."
           current_time=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
           sed -i "s/Last generated: .*/Last generated: $current_time<\/span>/" docs/index.html
-          echo "✅ Timestamp actualizado: $current_time"
+          echo "Timestamp actualizado: $current_time"
         else
-          echo "⚠️ docs/index.html no encontrado, generando desde template..."
+          echo " docs/index.html no encontrado, generando desde template..."
           cd software/documentation
           if [ -f "index_template.html" ]; then
             python generate_index.py
-            echo "✅ index.html generado desde template"
+            echo "index.html generado desde template"
           else
             echo "❌ Template no encontrado, creando index.html básico"
             mkdir -p ../../docs

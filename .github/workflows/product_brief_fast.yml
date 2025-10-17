@@ -34,15 +34,15 @@ jobs:
           texlive-latex-base \
           texlive-latex-recommended \
           ghostscript
-        echo "✅ LaTeX mínimo instalado"
+        echo " LaTeX mínimo instalado"
 
     - name: Generate PDF
       run: |
-        echo "📄 Generando PDF..."
+        echo " Generando PDF..."
         cd software/documentation
         pip install -r requirements.txt
         python generate_pdf.py
-        echo "✅ PDF generado: $(ls build/*.pdf)"
+        echo " PDF generado: $(ls build/*.pdf)"
 
     - name: Quick publish
       run: |
@@ -50,7 +50,7 @@ jobs:
         cp software/documentation/build/*.pdf docs/
         find hardware/ -name "*sch*.pdf" -exec cp {} docs/ \; 2>/dev/null || true
         
-        echo "🚀 Archivos listos:"
+        echo " Archivos listos:"
         ls -la docs/
 
     - name: Commit (main only)

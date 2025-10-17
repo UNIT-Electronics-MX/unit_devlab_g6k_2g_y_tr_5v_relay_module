@@ -47,14 +47,14 @@ OFF_TIME  = 1500              # OFF duration in milliseconds
 ```python
 last_tick = utime.ticks_ms()  # Record the first timestamp
 relay_on  = False             # Current relay state: False = OFF, True = ON
-RELAY_PIN.value(0)            # Ensure the relay starts in the OFF position
+RELAY_PIN.value(1)            # Ensure the relay starts in the OFF position (active LOW)
 ```
 
 1. last_tick stores the result of utime.ticks_ms(), which returns the number of milliseconds since the board started.
 
 2. relay_on is a Boolean flag tracking whether the relay is currently ON (True) or OFF (False).
 
-3. We drive the pin LOW (0) to guarantee a defined initial state.
+3. We drive the pin HIGH (1) to guarantee the relay starts OFF (active LOW logic).
 
 ## Main Loop Logic
 
@@ -66,14 +66,14 @@ while True:
         # Time to turn the relay ON
         relay_on   = True
         last_tick  = now
-        RELAY_PIN.value(1)
+        RELAY_PIN.value(0)  # LOW = Relay ON (active LOW)
         print("NO: On NC: Off")
 
     elif relay_on and utime.ticks_diff(now, last_tick) >= ON_TIME:
         # Time to turn the relay OFF
         relay_on   = False
         last_tick  = now
-        RELAY_PIN.value(0)
+        RELAY_PIN.value(1)  # HIGH = Relay OFF (active LOW)
         print("NO: Off NC: On")
 
     # Other non‑blocking tasks can go here
@@ -95,7 +95,7 @@ while True:
 
      - Update `last_tick = now`
 
-     - Energize the relay (`RELAY_PIN.value(1)`)
+     - Energize the relay (`RELAY_PIN.value(0)`) - active LOW logic
 
      - Print the state message
 
@@ -111,7 +111,7 @@ while True:
 
     - Reset `last_tick = now`
 
-    - De‑energize the relay (`RELAY_PIN.value(0)`)
+    - De‑energize the relay (`RELAY_PIN.value(1)`) - active LOW logic
 
     - Print the state message
 

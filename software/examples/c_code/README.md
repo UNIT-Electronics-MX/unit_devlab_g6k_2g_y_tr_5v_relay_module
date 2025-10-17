@@ -46,19 +46,35 @@ Blocks until the host PC opens the Serial Monitor
 
 ```cpp
 void loop() {
-  // --- Turn Input on (HIGH) ---
-  digitalWrite(IN_PIN, HIGH);
+  // --- Turn relay ON (LOW) ---
+  digitalWrite(IN_PIN, LOW);
   Serial.print("NO: On ");
   Serial.println("NC: Off");
   delay(T);
 
-  // --- Turn Input off (LOW) ---
-  digitalWrite(IN_PIN, LOW);
+  // --- Turn relay OFF (HIGH) ---
+  digitalWrite(IN_PIN, HIGH);
   Serial.print("NO: Off ");
   Serial.println("NC: On");
   delay(T);
 }
 ```
+
+- **Turn relay ON**
+
+  - `digitalWrite(IN_PIN, LOW);` energizes the coil → closes the NO contact, opens NC (active LOW).
+
+  - `Serial.print("NO: On "); Serial.println("NC: Off");` reports NO: On and NC: Off.
+
+  - `delay(T);` pauses for T ms before next action.
+
+- **Turn relay OFF**
+
+  - `digitalWrite(IN_PIN, HIGH);` de‑energizes the coil → opens NO, closes NC (active LOW).
+
+  - `Serial.print("NO: Off "); Serial.println("NC: On");` reports NO: Off and NC: On.
+
+  - `delay(T);` pauses again for T ms.
 
 - **Turn relay ON**
 

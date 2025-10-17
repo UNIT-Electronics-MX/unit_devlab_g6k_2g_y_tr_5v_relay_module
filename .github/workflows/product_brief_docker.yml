@@ -22,17 +22,17 @@ jobs:
 
     - name: Build PDF with Docker
       run: |
-        echo "🐳 Usando Docker para compilación rápida..."
+        echo "Usando Docker para compilación rápida..."
         
         # Crear script de compilación
         cat > compile.sh << 'EOF'
         #!/bin/bash
         cd /workspace/software/documentation
-        echo "🔄 Instalando dependencias Python..."
+        echo " Instalando dependencias Python..."
         pip install -r requirements.txt
-        echo "📄 Generando PDF..."
+        echo " Generando PDF..."
         python generate_pdf.py
-        echo "✅ PDF generado"
+        echo " PDF generado"
         ls -la build/
         EOF
         
@@ -54,18 +54,18 @@ jobs:
         cp software/documentation/build/*.pdf docs/${repo_name}_product_brief.pdf
         
         # Buscar y copiar esquemáticos
-        echo "🔄 Buscando archivos de esquemático..."
+        echo " Buscando archivos de esquemático..."
         find hardware/ -name "*sch*.pdf" -type f -exec cp {} docs/ \; 2>/dev/null || true
         
         # Generar index.html si no existe
         if [ ! -f "docs/index.html" ]; then
-          echo "🔄 Generando index.html..."
+          echo " Generando index.html..."
           cd software/documentation
-          python generate_index.py || echo "⚠️ No se pudo generar index.html"
+          python generate_index.py || echo " No se pudo generar index.html"
           cd ../..
         fi
         
-        echo "📁 Contenido final de docs/:"
+        echo "Contenido final de docs/:"
         ls -la docs/
 
     - name: Commit and push (only on main)
@@ -74,5 +74,5 @@ jobs:
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
         git add docs/
-        git commit -m "📄 Publish PDF via Docker compilation [skip ci]" || echo "No changes to commit"
+        git commit -m " Publish PDF via Docker compilation [skip ci]" || echo "No changes to commit"
         git push origin main
