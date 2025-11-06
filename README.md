@@ -22,9 +22,9 @@ This dual-channel relay module is engineered to safely and reliably interface wi
 
 
 [<img src="https://img.shields.io/badge/Product%20Wiki-blue?style=for-the-badge" alt="Product Wiki">](#)
-[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](#)
-[<img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now">](#)
-[<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](#)
+[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](./hardware/unit_datasheet_devLab_g6k_2g_y_tr_5v_relay_module.pdf)
+[<img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now">](https://uelectronics.com/)
+[<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](https://github.com/UNIT-Electronics-MX/unit_devlab_g6k_2g_y_tr_5v_relay_module/tree/main/software/examples/python_code)
 
 </div>
 
@@ -32,7 +32,7 @@ This dual-channel relay module is engineered to safely and reliably interface wi
 </div>
 
 ## **Features**
-- **2 × 5V relays** with Normally Open (NO) and Normally Closed (NC) contacts  
+- **1 × 5V relay** with Normally Open (NO) and Normally Closed (NC) contacts  
 - **Optical isolation** between control (logic) and power (coil) sides  
 - **LED indicators**: one for power and one per channel  
 - Compatible with **3.3V or 5V logic**  
