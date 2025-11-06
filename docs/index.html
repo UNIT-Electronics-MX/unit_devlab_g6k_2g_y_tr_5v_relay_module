@@ -1,482 +1,457 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNIT Relay Module - Documentation</title>
+    <title>Hardware Documentation - CN3165 Battery Charger Module</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .header h1 {
-            color: #2c3e50;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .header p {
-            color: #7f8c8d;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        .repo-info {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .repo-info:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .card h2 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-icon {
-            font-size: 1.8em;
-        }
-
-        .download-link {
-            display: block;
-            background: #e74c3c;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            margin: 10px 0;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .download-link:hover {
-            background: #c0392b;
-            transform: translateX(5px);
-        }
-
-        .download-link.schematic {
-            background: #f39c12;
-        }
-
-        .download-link.schematic:hover {
-            background: #e67e22;
-        }
-
-        .resource-link {
-            display: block;
-            color: #3498db;
-            text-decoration: none;
-            padding: 8px 0;
-            border-bottom: 1px solid #ecf0f1;
-            transition: color 0.3s ease;
-        }
-
-        .resource-link:hover {
-            color: #2980b9;
-        }
-
-        .resource-link:last-child {
-            border-bottom: none;
-        }
-
-        .stats {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .stats h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-
-        .stat-item {
-            display: inline-block;
-            margin: 0 15px;
-            padding: 10px;
-        }
-
-        .stat-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #3498db;
-            display: block;
-        }
-
-        .stat-label {
-            color: #7f8c8d;
-            font-size: 0.9em;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 20px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            color: #7f8c8d;
-        }
-
-        .error {
-            background: #e74c3c;
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            margin: 10px 0;
-            display: none;
-        }
+        body { font-family: Arial, sans-serif; background-color: #ffffff; }
+        .file-icon { margin-right: 8px; }
+        .folder-icon { color: #666666; }
+        .file-item { margin: 2px 0; padding: 6px; border-bottom: 1px solid #e0e0e0; }
+        .file-item:hover { background-color: #f5f5f5; }
+        .file-size { color: #666666; font-size: 0.9em; }
+        .file-date { color: #666666; font-size: 0.85em; }
+        .preview-modal img { max-width: 100%; height: auto; }
+        .tree-item { margin-left: 20px; }
+        .stats-card { background-color: #f8f9fa; color: #333333; border: 1px solid #dee2e6; }
+        .type-badge { font-size: 0.75em; }
+        .pdf-viewer { width: 100%; height: 600px; border: none; }
+        .file-link { text-decoration: none; color: #333333; }
+        .file-link:hover { color: #0066cc; }
+        .navbar { background-color: #ffffff !important; border-bottom: 1px solid #dee2e6; }
+        .navbar-brand { color: #333333 !important; }
+        .navbar-text { color: #666666 !important; }
+        .card { border: 1px solid #dee2e6; box-shadow: none; }
+        .card-header { background-color: #f8f9fa; border-bottom: 1px solid #dee2e6; }
+        .btn { border-radius: 3px; }
+        h1, h2, h3, h4, h5 { color: #333333; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🔌 UNIT Relay Module</h1>
-            <p>Dual-channel relay module for microcontroller applications</p>
-            <a href="#" class="repo-info" id="repoLink">
-                📁 View on GitHub
-            </a>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">
+                CN3165 Battery Charger Module - Hardware Documentation
+            </span>
+            <span class="navbar-text">
+                Generado: 2025-11-06 23:42:06
+            </span>
         </div>
+    </nav>
 
-        <div class="grid">
-            <!-- Documentation Card -->
-            <div class="card">
-                <h2>📖 Documentation</h2>
-                <div id="documentationLinks">
-                    <div class="loading">Loading documentation...</div>
-                </div>
-            </div>
-
-            <!-- Schematics Card -->
-            <div class="card">
-                <h2>⚡ Schematics</h2>
-                <div id="schematicLinks">
-                    <div class="loading">Loading schematics...</div>
-                </div>
-            </div>
-
-            <!-- Hardware Resources Card -->
-            <div class="card">
-                <h2>🔧 Hardware Resources</h2>
-                <div id="hardwareLinks">
-                    <div class="loading">Loading hardware resources...</div>
-                </div>
-            </div>
-
-            <!-- Software Examples Card -->
-            <div class="card">
-                <h2>💻 Software Examples</h2>
-                <div id="softwareLinks">
-                    <div class="loading">Loading software examples...</div>
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Resumen de Archivos</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <strong>Total de Archivos:</strong> 14
+                            </div>
+                            <div class="col-md-3">
+                                <strong>Imágenes:</strong> 11
+                            </div>
+                            <div class="col-md-3">
+                                <strong>Documentos:</strong> 3
+                            </div>
+                            <div class="col-md-3">
+                                <strong>Tamaño Total:</strong> 10.6 MB
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="stats">
-            <h3>📊 Repository Statistics</h3>
-            <div class="stat-item">
-                <span class="stat-number" id="fileCount">-</span>
-                <span class="stat-label">Files</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number" id="lastUpdate">-</span>
-                <span class="stat-label">Last Updated</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>© 2025 UNIT Electronics - Automated Documentation Portal</p>
-        <p>Last generated: 2025-10-17 19:07:29 UTC</span>
-    </div>
-
-    <script>
-        // Configuration
-        const REPO_OWNER = 'UNIT-Electronics-MX';
-        const REPO_NAME = 'unit_relay_module_g6k_2g_y_tr_dc5';  // Template variable for automation
-        const DOCS_BASE_URL = `https://${REPO_OWNER}.github.io/${REPO_NAME}`;
-        const GITHUB_BASE_URL = `https://github.com/${REPO_OWNER}/${REPO_NAME}`;
-
-        // Set generation time
-        document.getElementById('generationTime').textContent = new Date().toLocaleString();
-
-        // Set repository link
-        document.getElementById('repoLink').href = GITHUB_BASE_URL;
-
-        // File patterns to look for
-        const FILE_PATTERNS = {
-            documentation: [
-                { pattern: /.*product_brief\.pdf$/i, name: 'Product Brief', icon: '📋' },
-                { pattern: /.*datasheet\.pdf$/i, name: 'Datasheet', icon: '📊' },
-                { pattern: /README\.md$/i, name: 'README', icon: '📖' }
-            ],
-            schematics: [
-                { pattern: /.*sch.*\.pdf$/i, name: 'Schematic', icon: '⚡' },
-                { pattern: /.*schematic.*\.pdf$/i, name: 'Schematic', icon: '⚡' },
-                { pattern: /.*circuit.*\.pdf$/i, name: 'Circuit Diagram', icon: '🔌' }
-            ],
-            hardware: [
-                { pattern: /.*pinout.*\.(png|jpg|jpeg)$/i, name: 'Pinout Diagram', icon: '📌' },
-                { pattern: /.*dimension.*\.(png|jpg|jpeg)$/i, name: 'Dimensions', icon: '📏' },
-                { pattern: /.*top.*\.(png|jpg|jpeg)$/i, name: 'Top View', icon: '🔝' },
-                { pattern: /.*bottom.*\.(png|jpg|jpeg)$/i, name: 'Bottom View', icon: '🔽' },
-                { pattern: /.*topology.*\.(png|jpg|jpeg)$/i, name: 'Topology', icon: '🌐' }
-            ],
-            software: [
-                { pattern: /.*\.ino$/i, name: 'Arduino Code', icon: '🤖' },
-                { pattern: /.*\.py$/i, name: 'Python Code', icon: '🐍' },
-                { pattern: /.*\.c$/i, name: 'C Code', icon: '⚙️' },
-                { pattern: /.*\.cpp$/i, name: 'C++ Code', icon: '⚙️' }
-            ]
-        };
-
-        // Known files that should be in docs/
-        const KNOWN_FILES = [
-            {
-                name: 'Product Brief PDF',
-                url: `unit_relay_module_g6k_2g_y_tr_dc5_product_brief.pdf`,
-                type: 'documentation',
-                icon: '📋'
-            },
-            {
-                name: 'Schematic PDF',
-                url: 'unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf',
-                type: 'schematics',
-                icon: '⚡'
-            }
-        ];
-
-        // Load known files first
-        function loadKnownFiles() {
-            const containers = {
-                documentation: document.getElementById('documentationLinks'),
-                schematics: document.getElementById('schematicLinks')
-            };
-
-            KNOWN_FILES.forEach(file => {
-                const container = containers[file.type];
-                if (container) {
-                    // Clear loading message if it exists
-                    const loading = container.querySelector('.loading');
-                    if (loading) loading.style.display = 'none';
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            Archivos de Hardware
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-pdf file-icon"></i>
+                        <a href="hardware/unit_datasheet_devLab_g6k_2g_y_tr_5v_relay_module.pdf" target="_blank" title="Abrir PDF en nueva pestaña" class="file-link me-2">unit_datasheet_devLab_g6k_2g_y_tr_5v_relay_module.pdf</a>
+                        <span class="badge bg-primary type-badge me-2">document</span>
+                        
+                    <small class="ms-2">
+                        <a href="#" onclick="previewPDF('hardware/unit_datasheet_devLab_g6k_2g_y_tr_5v_relay_module.pdf', 'unit_datasheet_devLab_g6k_2g_y_tr_5v_relay_module.pdf')" title="Vista previa">ver</a> |
+                        <a href="hardware/unit_datasheet_devLab_g6k_2g_y_tr_5v_relay_module.pdf" target="_blank" title="Abrir en nueva pestaña">abrir</a> |
+                        <a href="hardware/unit_datasheet_devLab_g6k_2g_y_tr_5v_relay_module.pdf" download title="Descargar">descargar</a>
+                    </small>
                     
-                    const link = document.createElement('a');
-                    link.href = file.url;
-                    link.className = file.type === 'documentation' ? 'download-link' : 'download-link schematic';
-                    link.innerHTML = `${file.icon} ${file.name}`;
-                    link.target = '_blank';
-                    container.appendChild(link);
-                }
-            });
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">1.1 MB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-text file-icon"></i>
+                        <a href="hardware/README.md" target="_blank" title="Abrir archivo en nueva pestaña" class="file-link me-2">README.md</a>
+                        <span class="badge bg-primary type-badge me-2">document</span>
+                        
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">2.8 KB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-pdf file-icon"></i>
+                        <a href="hardware/unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf" target="_blank" title="Abrir PDF en nueva pestaña" class="file-link me-2">unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf</a>
+                        <span class="badge bg-primary type-badge me-2">document</span>
+                        
+                    <small class="ms-2">
+                        <a href="#" onclick="previewPDF('hardware/unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf', 'unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf')" title="Vista previa">ver</a> |
+                        <a href="hardware/unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf" target="_blank" title="Abrir en nueva pestaña">abrir</a> |
+                        <a href="hardware/unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf" download title="Descargar">descargar</a>
+                    </small>
+                    
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">76.7 KB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                <div class="tree-item">
+                    <div class="d-flex align-items-center file-item" style="cursor: pointer;" onclick="toggleFolder(this)">
+                        <i class="bi bi-chevron-down folder-toggle"></i>
+                        <i class="bi bi-folder-fill folder-icon file-icon"></i>
+                        <strong>resources</strong>
+                    </div>
+                    <div id="resources" class="ms-3">
+                
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-image file-icon"></i>
+                        <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_top_v_0_0_1ue0082_modulo_rele_g6k_.png', 'unit_top_v_0_0_1ue0082_modulo_rele_g6k_.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_top_v_0_0_1ue0082_modulo_rele_g6k_.png', '_blank'); return false;" class="file-link me-2">unit_top_v_0_0_1ue0082_modulo_rele_g6k_.png</a>
+                        <span class="badge bg-success type-badge me-2">image</span>
+                        
+                    <small class="ms-2">
+                        <a href="#" onclick="previewImage('hardware/resources/unit_top_v_0_0_1ue0082_modulo_rele_g6k_.png', 'unit_top_v_0_0_1ue0082_modulo_rele_g6k_.png')" title="Vista previa">ver</a> |
+                        <a href="hardware/resources/unit_top_v_0_0_1ue0082_modulo_rele_g6k_.png" target="_blank" title="Abrir en nueva pestaña">abrir</a>
+                    </small>
+                    
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">176.5 KB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-image file-icon"></i>
+                        <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_en.jpg', 'unit_pinout_v_0_0_1_ue0082_relay_en.jpg')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_en.jpg', '_blank'); return false;" class="file-link me-2">unit_pinout_v_0_0_1_ue0082_relay_en.jpg</a>
+                        <span class="badge bg-success type-badge me-2">image</span>
+                        
+                    <small class="ms-2">
+                        <a href="#" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_en.jpg', 'unit_pinout_v_0_0_1_ue0082_relay_en.jpg')" title="Vista previa">ver</a> |
+                        <a href="hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_en.jpg" target="_blank" title="Abrir en nueva pestaña">abrir</a>
+                    </small>
+                    
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">3.1 MB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-image file-icon"></i>
+                        <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_es.png', 'unit_pinout_v_0_0_1_ue0082_relay_es.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_es.png', '_blank'); return false;" class="file-link me-2">unit_pinout_v_0_0_1_ue0082_relay_es.png</a>
+                        <span class="badge bg-success type-badge me-2">image</span>
+                        
+                    <small class="ms-2">
+                        <a href="#" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_es.png', 'unit_pinout_v_0_0_1_ue0082_relay_es.png')" title="Vista previa">ver</a> |
+                        <a href="hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_es.png" target="_blank" title="Abrir en nueva pestaña">abrir</a>
+                    </small>
+                    
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">1.3 MB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-image file-icon"></i>
+                        <a style="cursor: pointer;" onclick="previewImage('hardware/resources/dimensions.png', 'dimensions.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/dimensions.png', '_blank'); return false;" class="file-link me-2">dimensions.png</a>
+                        <span class="badge bg-success type-badge me-2">image</span>
+                        
+                    <small class="ms-2">
+                        <a href="#" onclick="previewImage('hardware/resources/dimensions.png', 'dimensions.png')" title="Vista previa">ver</a> |
+                        <a href="hardware/resources/dimensions.png" target="_blank" title="Abrir en nueva pestaña">abrir</a>
+                    </small>
+                    
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">30.0 KB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-image file-icon"></i>
+                        <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_es.jpg', 'unit_pinout_v_0_0_1_ue0082_relay_es.jpg')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_es.jpg', '_blank'); return false;" class="file-link me-2">unit_pinout_v_0_0_1_ue0082_relay_es.jpg</a>
+                        <span class="badge bg-success type-badge me-2">image</span>
+                        
+                    <small class="ms-2">
+                        <a href="#" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_es.jpg', 'unit_pinout_v_0_0_1_ue0082_relay_es.jpg')" title="Vista previa">ver</a> |
+                        <a href="hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_es.jpg" target="_blank" title="Abrir en nueva pestaña">abrir</a>
+                    </small>
+                    
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">3.0 MB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-image file-icon"></i>
+                        <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_dimension_v_0_0_1ue0082_modulo_rele_g6k_.png', 'unit_dimension_v_0_0_1ue0082_modulo_rele_g6k_.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_dimension_v_0_0_1ue0082_modulo_rele_g6k_.png', '_blank'); return false;" class="file-link me-2">unit_dimension_v_0_0_1ue0082_modulo_rele_g6k_.png</a>
+                        <span class="badge bg-success type-badge me-2">image</span>
+                        
+                    <small class="ms-2">
+                        <a href="#" onclick="previewImage('hardware/resources/unit_dimension_v_0_0_1ue0082_modulo_rele_g6k_.png', 'unit_dimension_v_0_0_1ue0082_modulo_rele_g6k_.png')" title="Vista previa">ver</a> |
+                        <a href="hardware/resources/unit_dimension_v_0_0_1ue0082_modulo_rele_g6k_.png" target="_blank" title="Abrir en nueva pestaña">abrir</a>
+                    </small>
+                    
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">30.0 KB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-image file-icon"></i>
+                        <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_bottom_bottom_ue0082_modulo_rele_g6k_v_0_0_1.png', 'unit_bottom_bottom_ue0082_modulo_rele_g6k_v_0_0_1.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_bottom_bottom_ue0082_modulo_rele_g6k_v_0_0_1.png', '_blank'); return false;" class="file-link me-2">unit_bottom_bottom_ue0082_modulo_rele_g6k_v_0_0_1.png</a>
+                        <span class="badge bg-success type-badge me-2">image</span>
+                        
+                    <small class="ms-2">
+                        <a href="#" onclick="previewImage('hardware/resources/unit_bottom_bottom_ue0082_modulo_rele_g6k_v_0_0_1.png', 'unit_bottom_bottom_ue0082_modulo_rele_g6k_v_0_0_1.png')" title="Vista previa">ver</a> |
+                        <a href="hardware/resources/unit_bottom_bottom_ue0082_modulo_rele_g6k_v_0_0_1.png" target="_blank" title="Abrir en nueva pestaña">abrir</a>
+                    </small>
+                    
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">173.2 KB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-image file-icon"></i>
+                        <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_en.png', 'unit_pinout_v_0_0_1_ue0082_relay_en.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_en.png', '_blank'); return false;" class="file-link me-2">unit_pinout_v_0_0_1_ue0082_relay_en.png</a>
+                        <span class="badge bg-success type-badge me-2">image</span>
+                        
+                    <small class="ms-2">
+                        <a href="#" onclick="previewImage('hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_en.png', 'unit_pinout_v_0_0_1_ue0082_relay_en.png')" title="Vista previa">ver</a> |
+                        <a href="hardware/resources/unit_pinout_v_0_0_1_ue0082_relay_en.png" target="_blank" title="Abrir en nueva pestaña">abrir</a>
+                    </small>
+                    
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">1.3 MB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-image file-icon"></i>
+                        <a style="cursor: pointer;" onclick="previewImage('hardware/resources/unit_topology_v_0_0_1ue0082_modulo_rele_g6k_.png', 'unit_topology_v_0_0_1ue0082_modulo_rele_g6k_.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/unit_topology_v_0_0_1ue0082_modulo_rele_g6k_.png', '_blank'); return false;" class="file-link me-2">unit_topology_v_0_0_1ue0082_modulo_rele_g6k_.png</a>
+                        <span class="badge bg-success type-badge me-2">image</span>
+                        
+                    <small class="ms-2">
+                        <a href="#" onclick="previewImage('hardware/resources/unit_topology_v_0_0_1ue0082_modulo_rele_g6k_.png', 'unit_topology_v_0_0_1ue0082_modulo_rele_g6k_.png')" title="Vista previa">ver</a> |
+                        <a href="hardware/resources/unit_topology_v_0_0_1ue0082_modulo_rele_g6k_.png" target="_blank" title="Abrir en nueva pestaña">abrir</a>
+                    </small>
+                    
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">66.8 KB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                <div class="tree-item">
+                    <div class="d-flex align-items-center file-item" style="cursor: pointer;" onclick="toggleFolder(this)">
+                        <i class="bi bi-chevron-down folder-toggle"></i>
+                        <i class="bi bi-folder-fill folder-icon file-icon"></i>
+                        <strong>img</strong>
+                    </div>
+                    <div id="resources_img" class="ms-3">
+                
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-image file-icon"></i>
+                        <a style="cursor: pointer;" onclick="previewImage('hardware/resources/img/relay_module.png', 'relay_module.png')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/img/relay_module.png', '_blank'); return false;" class="file-link me-2">relay_module.png</a>
+                        <span class="badge bg-success type-badge me-2">image</span>
+                        
+                    <small class="ms-2">
+                        <a href="#" onclick="previewImage('hardware/resources/img/relay_module.png', 'relay_module.png')" title="Vista previa">ver</a> |
+                        <a href="hardware/resources/img/relay_module.png" target="_blank" title="Abrir en nueva pestaña">abrir</a>
+                    </small>
+                    
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">128.2 KB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between file-item">
+                    <div class="d-flex align-items-center flex-grow-1">
+                        <i class="bi bi-file-earmark-image file-icon"></i>
+                        <a style="cursor: pointer;" onclick="previewImage('hardware/resources/img/Schematics_icon.jpg', 'Schematics_icon.jpg')" title="Click para vista previa - Ctrl+Click para abrir en nueva pestaña" oncontextmenu="window.open('hardware/resources/img/Schematics_icon.jpg', '_blank'); return false;" class="file-link me-2">Schematics_icon.jpg</a>
+                        <span class="badge bg-success type-badge me-2">image</span>
+                        
+                    <small class="ms-2">
+                        <a href="#" onclick="previewImage('hardware/resources/img/Schematics_icon.jpg', 'Schematics_icon.jpg')" title="Vista previa">ver</a> |
+                        <a href="hardware/resources/img/Schematics_icon.jpg" target="_blank" title="Abrir en nueva pestaña">abrir</a>
+                    </small>
+                    
+                    </div>
+                    <div class="text-end ms-3">
+                        <small class="file-size d-block">142.0 KB</small>
+                        <small class="file-date">2025-11-06 23:41:56</small>
+                    </div>
+                </div>
+                
+                    </div>
+                </div>
+                
+                    </div>
+                </div>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para previsualizar imágenes -->
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Vista Previa de Imagen</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="" alt="Vista previa" class="img-fluid">
+                </div>
+                <div class="modal-footer">
+                    <a id="imageDirectLink" href="" target="_blank" class="btn btn-primary">
+                        <i class="bi bi-box-arrow-up-right"></i> Abrir en nueva pestaña
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para previsualizar PDFs -->
+    <div class="modal fade" id="pdfModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pdfModalLabel">Vista Previa de PDF</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe id="pdfViewer" class="pdf-viewer" src=""></iframe>
+                </div>
+                <div class="modal-footer">
+                    <a id="pdfDirectLink" href="" target="_blank" class="btn btn-primary">
+                        <i class="bi bi-box-arrow-up-right"></i> Abrir en nueva pestaña
+                    </a>
+                    <a id="pdfDownloadLink" href="" download class="btn btn-secondary">
+                        <i class="bi bi-download"></i> Descargar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Función para mostrar vista previa de imágenes
+        function previewImage(src, title) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('imageModalLabel').textContent = title;
+            document.getElementById('imageDirectLink').href = src;
+            new bootstrap.Modal(document.getElementById('imageModal')).show();
         }
 
-        // Try to fetch GitHub API data
-        async function loadFromGitHub() {
-            try {
-                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`);
-                if (!response.ok) throw new Error('GitHub API request failed');
-                
-                const data = await response.json();
-                console.log('Repository contents loaded from GitHub API');
-                
-                // Process the data
-                await processDirectoryContents(data, '');
-                
-                // Update stats
-                document.getElementById('fileCount').textContent = data.length;
-                
-            } catch (error) {
-                console.log('GitHub API not available, using known files only');
-                loadFallbackContent();
-            }
+        // Función para mostrar vista previa de PDFs
+        function previewPDF(src, title) {
+            document.getElementById('pdfViewer').src = src;
+            document.getElementById('pdfModalLabel').textContent = title;
+            document.getElementById('pdfDirectLink').href = src;
+            document.getElementById('pdfDownloadLink').href = src;
+            new bootstrap.Modal(document.getElementById('pdfModal')).show();
         }
 
-        // Process directory contents recursively
-        async function processDirectoryContents(contents, basePath) {
-            for (const item of contents) {
-                if (item.type === 'file') {
-                    categorizeAndAddFile(item.name, basePath + item.name, item.download_url);
-                } else if (item.type === 'dir' && ['hardware', 'software'].includes(item.name)) {
-                    try {
-                        const dirResponse = await fetch(item.url);
-                        const dirContents = await dirResponse.json();
-                        await processDirectoryContents(dirContents, basePath + item.name + '/');
-                    } catch (error) {
-                        console.log(`Could not load directory: ${item.name}`);
-                    }
-                }
-            }
-        }
-
-        // Categorize and add file to appropriate section
-        function categorizeAndAddFile(filename, fullPath, downloadUrl) {
-            Object.entries(FILE_PATTERNS).forEach(([category, patterns]) => {
-                patterns.forEach(pattern => {
-                    if (pattern.pattern.test(filename)) {
-                        addFileToCategory(category, {
-                            name: pattern.name,
-                            filename: filename,
-                            url: downloadUrl || `${GITHUB_BASE_URL}/raw/main/${fullPath}`,
-                            icon: pattern.icon
-                        });
-                    }
-                });
-            });
-        }
-
-        // Add file to category
-        function addFileToCategory(category, file) {
-            const containerId = category + 'Links';
-            const container = document.getElementById(containerId);
-            if (!container) return;
-
-            // Clear loading message
-            const loading = container.querySelector('.loading');
-            if (loading) loading.style.display = 'none';
-
-            // Check if already exists
-            const existing = Array.from(container.children).find(child => 
-                child.textContent.includes(file.filename)
-            );
-            if (existing) return;
-
-            const link = document.createElement('a');
+        // Función para alternar carpetas
+        function toggleFolder(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.folder-toggle');
             
-            if (category === 'documentation' || category === 'schematics') {
-                link.className = category === 'documentation' ? 'download-link' : 'download-link schematic';
-                link.innerHTML = `${file.icon} ${file.name}`;
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                icon.classList.remove('bi-chevron-right');
+                icon.classList.add('bi-chevron-down');
             } else {
-                link.className = 'resource-link';
-                link.innerHTML = `${file.icon} ${file.filename}`;
+                content.style.display = 'none';
+                icon.classList.remove('bi-chevron-down');
+                icon.classList.add('bi-chevron-right');
             }
-            
-            link.href = file.url;
-            link.target = '_blank';
-            container.appendChild(link);
         }
 
-        // Load fallback content when GitHub API is not available
-        function loadFallbackContent() {
-            // Hardware resources
-            const hardwareContainer = document.getElementById('hardwareLinks');
-            hardwareContainer.innerHTML = `
-                <a href="${GITHUB_BASE_URL}/tree/main/hardware/resources" class="resource-link" target="_blank">
-                    📁 Browse Hardware Resources
-                </a>
-                <a href="${GITHUB_BASE_URL}/blob/main/hardware/README.md" class="resource-link" target="_blank">
-                    📖 Hardware Documentation
-                </a>
-            `;
-
-            // Software examples
-            const softwareContainer = document.getElementById('softwareLinks');
-            softwareContainer.innerHTML = `
-                <a href="${GITHUB_BASE_URL}/tree/main/software/examples" class="resource-link" target="_blank">
-                    📁 Browse Code Examples
-                </a>
-                <a href="${GITHUB_BASE_URL}/tree/main/software/examples/c_code" class="resource-link" target="_blank">
-                    🤖 Arduino Examples
-                </a>
-                <a href="${GITHUB_BASE_URL}/tree/main/software/examples/python_code" class="resource-link" target="_blank">
-                    🐍 Python Examples
-                </a>
-            `;
-
-            // Update stats
-            document.getElementById('fileCount').textContent = 'N/A';
+        // Función para abrir archivo en nueva pestaña
+        function openInNewTab(url) {
+            window.open(url, '_blank');
         }
 
-        // Initialize
-        function init() {
-            loadKnownFiles();
-            loadFromGitHub();
-            
-            // Set last update
-            document.getElementById('lastUpdate').textContent = 'Today';
-        }
-
-        // Run when page loads
-        document.addEventListener('DOMContentLoaded', init);
+        // Manejar clicks con Ctrl para abrir en nueva pestaña
+        document.addEventListener('click', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                const link = e.target.closest('a[onclick*="previewImage"]');
+                if (link) {
+                    e.preventDefault();
+                    const src = link.getAttribute('onclick').match(/'([^']+)'/)[1];
+                    window.open(src, '_blank');
+                }
+            }
+        });
     </script>
 </body>
 </html>
+    
