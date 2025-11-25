@@ -124,7 +124,7 @@ def generate_html_page(file_structure):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hardware Documentation - CN3165 Battery Charger Module</title>
+    <title>Hardware Documentation </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <style>
@@ -155,7 +155,7 @@ def generate_html_page(file_structure):
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">
-                CN3165 Battery Charger Module - Hardware Documentation
+                Hardware Documentation
             </span>
             <span class="navbar-text">
                 Generado: {{ generated_time }}
