@@ -59,5 +59,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 
 
-## Aditional links
+## Additional links
 - [Images and Documentation](https://unit-electronics-mx.github.io/unit_devlab_g6k_2g_y_tr_5v_relay_module/)
