@@ -21,10 +21,10 @@ This dual-channel relay module is engineered to safely and reliably interface wi
 ### Quick Setup
 
 
-[<img src="https://img.shields.io/badge/Product%20Wiki-blue?style=for-the-badge" alt="Product Wiki">](#)
-[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](./hardware/unit_datasheet_devLab_g6k_2g_y_tr_5v_relay_module.pdf)
-[<img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now">](https://uelectronics.com/)
-[<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](https://github.com/UNIT-Electronics-MX/unit_devlab_g6k_2g_y_tr_5v_relay_module/tree/main/software/examples/python_code)
+[<img src="https://img.shields.io/badge/Product%20Wiki-blue?style=for-the-badge" alt="Product Wiki">](https://wiki.uelectronics.com/wiki/devlab-g6k-2g-y-tr-5v-relay-module)
+[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](https://unit-electronics-mx.github.io/unit_devlab_g6k_2g_y_tr_5v_relay_module/hardware/unit_datasheet_devLab_g6k_2g_y_tr_5v_relay_module.pdf)
+[<img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now">](https://uelectronics.com/producto/g6k-2g-y-tr-relevador-de-2-canales-5v-unit-devlab/)
+[<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](#)
 
 </div>
 
@@ -57,9 +57,7 @@ For any issues or further assistance, please open an issue on the GitHub reposit
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Resources
-- [Product brief](docs/unit_relay_module_g6k_2g_y_tr_dc5_product_brief.pdf)
-- [Schematic](hardware/unit_sch_v_0_0_1ue0082_modulo_rele_g6k_.pdf)
 
 
-
+## Aditional links
+- [Images and Documentation](https://uelectronics.com/producto/g6k-2g-y-tr-relevador-de-2-canales-5v-unit-devlab)
